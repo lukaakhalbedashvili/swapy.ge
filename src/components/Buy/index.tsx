@@ -1,10 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Input from "../Input";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { sendToBack } from "@/server-actions";
+import { useRouter } from "next/navigation";
 
 const Buy = () => {
   const plusPointRate = 400;
+
+  const router = useRouter();
 
   const validationSchema = Yup.object().shape({
     plusPointsToSell: Yup.number()
@@ -20,48 +24,43 @@ const Buy = () => {
 
   const formik = useFormik({
     initialValues: {
-      plusPointsToSell: "",
-      requiredLari: "",
+      plusPointsToSell: undefined,
+      requiredLari: undefined,
     },
     validationSchema,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async ({ requiredLari }) => {
+      const response = await sendToBack(requiredLari!);
+      router.push(response.data._links.redirect.href);
     },
   });
 
-  const { values, handleBlur, handleChange, touched, errors, setFieldValue } =
-    formik;
-
-  useEffect(() => {
-    if (values?.plusPointsToSell) {
-      const requiredLari = Number(values.plusPointsToSell) / plusPointRate;
-
-      setFieldValue("requiredLari", requiredLari);
-    }
-  }, [values.plusPointsToSell, setFieldValue]);
-
-  useEffect(() => {
-    if (values?.requiredLari) {
-      const plusPointsToSell = Number(values.requiredLari) * plusPointRate;
-
-      setFieldValue("plusPointsToSell", plusPointsToSell);
-    }
-  }, [values.requiredLari, setFieldValue]);
+  const {
+    values,
+    handleBlur,
+    handleChange,
+    touched,
+    errors,
+    setFieldValue,
+    handleSubmit,
+  } = formik;
 
   return (
-    <form onSubmit={formik.handleSubmit} className="mt-6">
+    <form onSubmit={handleSubmit} className="mt-6">
       <Input
         placeholder="მისაღები პლუს ქულების რაოდენობა"
         type="number"
         value={values.plusPointsToSell}
         name="plusPointsToSell"
-        onBlurHandler={(e) => {
-          setFieldValue("requiredLari", Number(values.requiredLari).toFixed(2));
-          return handleBlur(e);
+        onBlurHandler={handleBlur}
+        onChange={(e) => {
+          const requiredLari = Number(e.target.value) / plusPointRate;
+          setFieldValue("requiredLari", requiredLari.toFixed(2));
+          return handleChange(e);
         }}
-        onChange={handleChange}
-        errorMessage={touched.plusPointsToSell && errors.plusPointsToSell}
-        permanentText={values.plusPointsToSell ? "PLUS ქულა" : ""}
+        errorMessage={errors.plusPointsToSell}
+        permanentText={
+          touched.plusPointsToSell && values.plusPointsToSell ? "PLUS ქულა" : ""
+        }
       />
 
       <Input
@@ -71,18 +70,22 @@ const Buy = () => {
         value={values.requiredLari}
         name="requiredLari"
         onBlurHandler={(e) => {
-          setFieldValue("requiredLari", parseFloat(e.target.value).toFixed(2));
+          setFieldValue("requiredLari", Number(e.target.value).toFixed(2));
           return handleBlur(e);
         }}
-        onChange={handleChange}
+        onChange={(e) => {
+          const plusPointsToSell = Number(e.target.value) * plusPointRate;
+          setFieldValue("plusPointsToSell", Math.round(plusPointsToSell));
+          return handleChange(e);
+        }}
         errorMessage={touched.requiredLari && errors.requiredLari}
       />
 
       <p className="text-smallSecondaryTxt">400 Plus ქულა = 1.00 ₾</p>
 
       <div>
-        <button className="p-6 bg-main w-full rounded-lg mt-10">
-          {`გადახდა ( ${Number(values.requiredLari).toFixed(2)} ₾ )`}
+        <button className={`p-6 bg-main w-full rounded-lg mt-10`} type="submit">
+          {`გადახდა ( ${values.requiredLari ? values.requiredLari : 0} ₾ )`}
         </button>
       </div>
     </form>
