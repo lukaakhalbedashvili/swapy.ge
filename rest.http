@@ -1,0 +1,37 @@
+### Request 1: OAuth2 Token Request
+POST https://oauth2.bog.ge/auth/realms/bog/protocol/openid-connect/token
+Authorization: Basic NDI5NzM6b2l4ZU1sMklVcjhU
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials
+
+### Request 2: Create Order
+POST https://api.bog.ge/payments/v1/ecommerce/orders
+Accept-Language: ka
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJqbFZjbGpJRnM0YnpJX1dSTDlFSmdIRjJ1YUV1Q0pLU2QzNnNoT0pvZVFjIn0.eyJleHAiOjE3MTg1MzUyNzMsImlhdCI6MTcxODUzNDk3MywianRpIjoiNDdlZDI3ZDctNjNmZC00OGMwLTkxMmItZDA0Njc3YTEwZmU2IiwiaXNzIjoiaHR0cHM6Ly9vYXV0aDIuYm9nLmdlL2F1dGgvcmVhbG1zL2JvZyIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiI5ZTJiZGM1MS0wMTRkLTRhY2YtYjM0YS0zZTBmNTA2YzVlZjUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiI0Mjk3MyIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiZGVmYXVsdC1yb2xlcy1ib2ciLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJlbWFpbCBwcm9maWxlIiwiY2xpZW50SWQiOiI0Mjk3MyIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiY2xpZW50SG9zdCI6IjE4NS4xMTUuNy4yMjIiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJzZXJ2aWNlLWFjY291bnQtNDI5NzMiLCJjbGllbnRBZGRyZXNzIjoiMTg1LjExNS43LjIyMiJ9.P9b1RvgybVAskkatyqMLPTsMJiWsIc8mrcEe-2v3ubT4JFs3WI5J-N-CKR594YHtuxRMmmx3hvVUZAPgTNUYlR8iW1bjPJ3-OW_lzRisBe3xtYvQRajiD7-tohgCPuQQyXo3Z_a9aGK_Wcm3v4emTGPXbOepk3Z7gYButbjJ4d8GL99begvO463buyQW83ocp_XpcTXC7fIhyc0vK5rpSkhi2Hz0VV0vU8lrTs84JT5ICXgaG9uEOGo5sxrr6bv4-xTwHWjlX1jfYGS8utBHd9cd30CFumYutyOo4jiCmSbVgY60JZkdLP9giTpXUaGrIXQFBvUfOWKcF7WsfAZ-bA
+Content-Type: application/json
+
+{
+    "callback_url": "https://example.com/callback",
+    "external_order_id": "id123",
+    "purchase_units": {
+        "currency": "GEL",
+        "total_amount": 1,
+        "basket": [
+            {
+                "quantity": 1,
+                "unit_price": 1,
+                "product_id": "product123"
+            }
+        ]
+    },
+    "redirect_urls": {
+        "fail": "https://example.com/fail",
+        "success": "https://example.com/success"
+    },
+    "payment_method" : ["bog_loyalty"]
+}
+
+### 
+
+POST http://localhost:3000/api/payments/sell
