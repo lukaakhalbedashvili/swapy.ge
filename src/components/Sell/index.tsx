@@ -41,7 +41,6 @@ const Sell = () => {
       console.log(response.data._links.redirect.href);
 
       // router.push(response.data._links.redirect.href);
-      console.log(plusPointsToSell! / BOG_RATE, result);
     },
   });
 
