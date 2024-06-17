@@ -28,7 +28,10 @@ const CollapsibleFAQ = ({
           isOpen ? "h-auto" : "h-0"
         }`}
       >
-        <div className="p-4 pl-2 pt-0 border-b pb-12 mt-5">{answer}</div>
+        <div
+          className="p-4 pl-2 pt-0 border-b pb-12 mt-5"
+          dangerouslySetInnerHTML={{ __html: answer }}
+        />
       </div>
     </div>
   );
