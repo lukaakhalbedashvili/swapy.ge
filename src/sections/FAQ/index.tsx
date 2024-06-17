@@ -1,9 +1,6 @@
 "use client";
-import Buy from "@/components/Buy";
 import CollapsibleFAQ from "@/components/CollapsibleFAQ";
-import Sell from "@/components/Sell";
-import SwitchBetweenBtn from "@/components/SwitchBetweenBtn";
-import React, { useState } from "react";
+import React from "react";
 
 export enum TransactionType {
   SELL = "sell",
@@ -11,8 +8,6 @@ export enum TransactionType {
 }
 
 const FAQ = () => {
-  const [selectedTransactionType, setSelectedTransactionType] =
-    useState<TransactionType>(TransactionType.SELL);
   const faqs = [
     {
       question: "რამდენ ხანში აისახება თანხა ანგარიშზე?",
@@ -20,8 +15,14 @@ const FAQ = () => {
     },
     {
       question: "რამდენად უსაფრთხოა გადახდის პროცესი?",
+      answer: `გადახდის პროცესი ხორციელდება ბანკის მიერ, ჩვენ არ გვაქვს წვდომა თქვენს მიერ შეყვანილ მონაცემებზე.
+      <br/>
+      ყოველი ახალი ტრანზაქციის დროს ბანკი გიგზავნით ვერიფიკაციის კოდს, რომლის გარეშეც გადახდა შეუძლებელია.`,
+    },
+    {
+      question: "სად დამერიცხება თანხა?",
       answer:
-        "You can install Next.js using npm or yarn. Run `npm install next react react-dom` or `yarn add next react react-dom`.",
+        "ტრანზაქციის წარმატებით დასრულების შემთხვევაში თანხა დაგერიცხებათ იმავე ანგარიშზე საიდანაც PLUS ქულებით გადაიხადეთ",
     },
   ];
 
