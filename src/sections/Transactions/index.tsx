@@ -11,19 +11,19 @@ export enum TransactionType {
 
 const Transactions = () => {
   const [selectedTransactionType, setSelectedTransactionType] =
-    useState<TransactionType>(TransactionType.BUY);
+    useState<TransactionType>(TransactionType.SELL);
 
   return (
-    <section className="mt-10 w-full">
-      <h2 className="w-full text-center flex justify-center  mb-10">
-        ქულების ყიდვა / გაყიდვა
-      </h2>
+    <section className="mt-[30%] w-full px-2" id="გაცვალე">
+      <h1 className="w-full text-center flex justify-center  mb-10">
+        მიიღე თანხა PLUS ქულების სანაცვლოდ
+      </h1>
 
-      <div className="bg-body rounded-lg p-2 mx-1">
-        <SwitchBetweenBtn
+      <div className="bg-body rounded-lg p-2">
+        {/* <SwitchBetweenBtn
           onClickHandler={(type) => setSelectedTransactionType(type)}
           selectedTransactionType={selectedTransactionType}
-        />
+          /> */}
 
         {selectedTransactionType === TransactionType.BUY ? <Buy /> : <Sell />}
       </div>
