@@ -1,9 +1,4 @@
-import React, {
-  ChangeEvent,
-  HTMLInputTypeAttribute,
-  useEffect,
-  useState,
-} from "react";
+import React, { HTMLInputTypeAttribute } from "react";
 
 interface InputI {
   placeholder: string;
@@ -44,7 +39,9 @@ const Input = ({
         {permanentText}
       </span>
 
-      {errorMessage && <p className="text-error mt-1">{errorMessage}</p>}
+      {errorMessage && (
+        <p className="text-error mt-1 absolute">{errorMessage}</p>
+      )}
     </div>
   );
 };
