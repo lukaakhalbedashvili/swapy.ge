@@ -11,7 +11,7 @@ const AboutUs = () => {
         ჩვენს შესახებ
       </h1>
 
-      <div className="bg-body rounded-lg p-2">
+      <div className="bg-body rounded-lg p-2 text-gray-400">
         swapy / სვაპი პლატფორმაა რომლის მიზანიც PLUS ქულების გაცვლის პროცესის
         გამარტივებაა.
         <br />
