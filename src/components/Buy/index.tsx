@@ -1,22 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Input from "../Input";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { sendToBack } from "@/server-actions";
 import { useRouter } from "next/navigation";
+import { getPaymentLinkAction } from "@/server-actions";
+import { PaymentMethods } from "@/server-actions/server_actions_types";
 
 const Buy = () => {
-  const plusPointRate = 400;
+  const plusPointRate = 350;
 
   const router = useRouter();
 
   const validationSchema = Yup.object().shape({
-    plusPointsToSell: Yup.number()
+    plusPointsBuy: Yup.number()
       .typeError("")
       .required("სავალდებულოა")
-      .min(400, "მინიმალური რაოდენობა 400 ქულაა"),
+      .min(plusPointRate, `მინიმალური რაოდენობა ${plusPointRate} ქულაა`),
 
-    requiredLari: Yup.number()
+    requiredLariAmount: Yup.number()
       .typeError("")
       .required("სავალდებულოა")
       .min(1, "მინიმალური რაოდენობა 1 ლარია"),
@@ -24,12 +25,18 @@ const Buy = () => {
 
   const formik = useFormik({
     initialValues: {
-      plusPointsToSell: undefined,
-      requiredLari: undefined,
+      plusPointsBuy: undefined,
+      requiredLariAmount: undefined,
     },
     validationSchema,
-    onSubmit: async ({ requiredLari }) => {
-      const response = await sendToBack(requiredLari!);
+    onSubmit: async ({ requiredLariAmount }) => {
+      const response = await getPaymentLinkAction({
+        requiredLariAmount: requiredLariAmount!,
+        paymentMethod: PaymentMethods.card,
+      });
+
+      console.log(response, "response");
+
       router.push(response.data._links.redirect.href);
     },
   });
@@ -42,50 +49,66 @@ const Buy = () => {
     errors,
     setFieldValue,
     handleSubmit,
+    validateForm,
   } = formik;
+
+  useEffect(() => {
+    validateForm();
+  }, [values, validateForm]);
 
   return (
     <form onSubmit={handleSubmit} className="mt-6">
       <Input
-        placeholder="მისაღები პლუს ქულების რაოდენობა"
+        placeholder="შესაძენი პლუს ქულების რაოდენობა"
         type="number"
-        value={values.plusPointsToSell}
-        name="plusPointsToSell"
+        value={values.plusPointsBuy}
+        name="plusPointsBuy"
         onBlurHandler={handleBlur}
         onChange={(e) => {
-          const requiredLari = Number(e.target.value) / plusPointRate;
-          setFieldValue("requiredLari", requiredLari.toFixed(2));
+          const requiredLariAmount = Number(e.target.value) / plusPointRate;
+          setFieldValue("requiredLariAmount", requiredLariAmount.toFixed(2));
           return handleChange(e);
         }}
-        errorMessage={errors.plusPointsToSell}
-        permanentText={
-          touched.plusPointsToSell && values.plusPointsToSell ? "PLUS ქულა" : ""
-        }
+        errorMessage={touched.plusPointsBuy && errors.plusPointsBuy}
+        permanentText={values.plusPointsBuy ? "PLUS ქულა" : ""}
       />
 
       <Input
-        permanentText={values.requiredLari ? "₾" : ""}
-        placeholder="გასაცემი ლარი"
+        permanentText={values.requiredLariAmount ? "₾" : ""}
+        placeholder="ღირებულება ლარში"
         type="number"
-        value={values.requiredLari}
-        name="requiredLari"
+        value={values.requiredLariAmount}
+        name="requiredLariAmount"
         onBlurHandler={(e) => {
-          setFieldValue("requiredLari", Number(e.target.value).toFixed(2));
+          setFieldValue(
+            "requiredLariAmount",
+            Number(e.target.value).toFixed(2)
+          );
           return handleBlur(e);
         }}
         onChange={(e) => {
-          const plusPointsToSell = Number(e.target.value) * plusPointRate;
-          setFieldValue("plusPointsToSell", Math.round(plusPointsToSell));
+          const plusPointsBuy = Number(e.target.value) * plusPointRate;
+          setFieldValue("plusPointsBuy", Math.round(plusPointsBuy));
           return handleChange(e);
         }}
-        errorMessage={touched.requiredLari && errors.requiredLari}
+        errorMessage={touched.requiredLariAmount && errors.requiredLariAmount}
       />
 
-      <p className="text-smallSecondaryTxt">400 Plus ქულა = 1.00 ₾</p>
+      <p className="text-smallSecondaryTxt">
+        {plusPointRate} Plus ქულა = 1.00 ₾
+      </p>
+
+      {values.plusPointsBuy && (
+        <p className=" mt-4 text-white">
+          ანგარიშზე დაგერიცხებათ {values.plusPointsBuy} PLUS ქულა
+        </p>
+      )}
 
       <div>
         <button className={`p-6 bg-main w-full rounded-lg mt-10`} type="submit">
-          {`გადახდა ( ${values.requiredLari ? values.requiredLari : 0} ₾ )`}
+          {`გადახდა ( ${
+            values.requiredLariAmount ? values.requiredLariAmount : 0
+          } ₾ )`}
         </button>
       </div>
     </form>
