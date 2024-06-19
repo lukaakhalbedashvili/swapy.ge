@@ -2,7 +2,6 @@
 
 import {
   CreatePaymentLinkResponseI,
-  PaymentMethods,
   getPaymentLinkActionPayloadI,
 } from "./server_actions_types";
 
