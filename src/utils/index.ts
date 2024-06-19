@@ -4,10 +4,8 @@ export const getRequestBody = (
   paymentMethod: PaymentMethods,
   amount: string | number
 ) => {
-  console.log("https://plus-pi.vercel.app/");
-
   return {
-    callback_url: `${process.env.NEXT_APP_BASE_URL}/api/payments/callback`,
+    callback_url: `https://plus-pi.vercel.app/api/payments/callback`,
     purchase_units: {
       currency: "GEL",
       total_amount: amount,

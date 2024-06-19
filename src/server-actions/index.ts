@@ -5,6 +5,7 @@ import {
   CreatePaymentLinkResponseI,
   getPaymentLinkActionPayloadI,
 } from "./server_actions_types";
+import prisma from "../../lib/prisma";
 
 const getAuthToken = async () => {
   const res = await fetch(
@@ -26,6 +27,32 @@ const getAuthToken = async () => {
   return data.access_token;
 };
 
+export const createTransaction = async () => {
+  return "";
+};
+
+export const getTransactionReceipt = async (
+  href: string,
+  authToken: string
+) => {
+  const res = await fetch(href, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${authToken}`,
+    },
+  });
+
+  const body: { order_id: string; purchase_units: { request_amount: number } } =
+    await res.json();
+
+  await prisma.order.create({
+    data: {
+      id: body.order_id,
+      amount: Number(body.purchase_units.request_amount),
+    },
+  });
+};
+
 export const getPaymentLinkAction = async ({
   requiredLariAmount,
   paymentMethod,
@@ -43,5 +70,9 @@ export const getPaymentLinkAction = async ({
     body: JSON.stringify(getRequestBody(paymentMethod, requiredLariAmount)),
   });
 
-  return await res.json();
+  const body: CreatePaymentLinkResponseI = await res.json();
+
+  getTransactionReceipt(body._links.details.href, authToken);
+
+  return body;
 };

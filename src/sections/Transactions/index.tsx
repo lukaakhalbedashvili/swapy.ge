@@ -14,10 +14,7 @@ const Transactions = () => {
     useState<TransactionType>(TransactionType.SELL);
 
   return (
-    <section
-      className="pt-[30%] w-full px-2 lg:pt-[10%]  lg:w-1/2"
-      id="გაცვალე"
-    >
+    <section className="pt-[30%] w-full px-2 lg:pt-[7%]  lg:w-1/2" id="გაცვალე">
       <h1 className="w-full text-center flex justify-center  mb-10">
         მიიღე თანხა PLUS ქულების სანაცვლოდ
       </h1>
