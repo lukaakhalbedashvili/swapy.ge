@@ -20,7 +20,7 @@ const Sell = () => {
       .min(plusPointRate, `მინიმალური რაოდენობა ${plusPointRate} ქულაა`),
     receivedMoney: Yup.number().typeError("").required("სავალდებულოა"),
     govID: Yup.string()
-      .required("სალდებულოა")
+      .required("სავალდებულოა")
       .length(11, "შეიყვანეთ ვალიდური პირადი ნომერი")
       .matches(/^\d{0,11}$/, "შეიყვანეთ ვალიდური პირადი ნომერი"),
   });
@@ -38,7 +38,7 @@ const Sell = () => {
         requiredLariAmount: (plusPointsToSell! / BOG_RATE).toFixed(2),
       });
 
-      console.log(response._links.redirect.href);
+      console.log(response);
 
       // router.push(response.data._links.redirect.href);
     },
