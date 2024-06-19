@@ -7,7 +7,7 @@ export const getRequestBody = (
   console.log("https://plus-pi.vercel.app/");
 
   return {
-    callback_url: `${process.env.NEXT_APP_BASE_URL}/callback`,
+    callback_url: `${process.env.NEXT_APP_BASE_URL}/api/payments/callback`,
     purchase_units: {
       currency: "GEL",
       total_amount: amount,
