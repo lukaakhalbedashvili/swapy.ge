@@ -35,9 +35,7 @@ const Buy = () => {
         paymentMethod: PaymentMethods.card,
       });
 
-      console.log(response, "response");
-
-      router.push(response.data._links.redirect.href);
+      router.push(response._links.redirect.href);
     },
   });
 
