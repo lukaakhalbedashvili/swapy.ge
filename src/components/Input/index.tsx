@@ -1,4 +1,4 @@
-import React, { HTMLInputTypeAttribute } from "react";
+import React, { HTMLAttributes, HTMLInputTypeAttribute } from "react";
 
 interface InputI {
   placeholder: string;
@@ -10,6 +10,7 @@ interface InputI {
   onBlurHandler?: (e: React.FocusEvent<HTMLInputElement>) => void;
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
   permanentText?: string;
+  inputMode?: "numeric" | "text";
 }
 
 const Input = ({
@@ -22,6 +23,7 @@ const Input = ({
   onFocus,
   value,
   permanentText,
+  inputMode,
 }: InputI) => {
   return (
     <div className="relative my-8">
@@ -29,6 +31,7 @@ const Input = ({
         placeholder={placeholder}
         type={type}
         value={value}
+        inputMode={inputMode}
         onBlur={onBlurHandler}
         name={name}
         onChange={onChange}

@@ -18,14 +18,18 @@ const Sell = () => {
       .typeError("")
       .required("სავალდებულოა")
       .min(plusPointRate, `მინიმალური რაოდენობა ${plusPointRate} ქულაა`),
-
     receivedMoney: Yup.number().typeError("").required("სავალდებულოა"),
+    govID: Yup.string()
+      .required("სალდებულოა")
+      .length(11, "შეიყვანეთ ვალიდური პირადი ნომერი")
+      .matches(/^\d{0,11}$/, "შეიყვანეთ ვალიდური პირადი ნომერი"),
   });
 
   const formik = useFormik({
     initialValues: {
       plusPointsToSell: undefined,
       receivedMoney: undefined,
+      govID: undefined,
     },
     validationSchema,
     onSubmit: async ({ plusPointsToSell }) => {
@@ -90,6 +94,17 @@ const Sell = () => {
           return handleChange(e);
         }}
         errorMessage={touched.receivedMoney && errors.receivedMoney}
+      />
+
+      <Input
+        placeholder="პირადი ნომერი"
+        type="string"
+        value={values.govID}
+        name="govID"
+        onBlurHandler={handleBlur}
+        onChange={handleChange}
+        errorMessage={touched.govID && errors.govID}
+        inputMode="numeric"
       />
 
       <p className="text-smallSecondaryTxt">
