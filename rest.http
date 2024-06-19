@@ -34,4 +34,4 @@ Content-Type: application/json
 
 ### 
 
-POST http://localhost:3000/api/payments/sell
+POST https://plus-pi.vercel.app/api/payments/callback
