@@ -4,7 +4,7 @@ import React from "react";
 const Contact = () => {
   return (
     <section
-      className="pt-[10%] w-full  flex items-center flex-col px-2 pb-20"
+      className="pt-[10%] w-full  flex items-center flex-col px-2 pb-20 lg:pt-10"
       id="კონტაქტი"
     >
       <h1 className="w-full text-center flex justify-center  mb-10 ">
