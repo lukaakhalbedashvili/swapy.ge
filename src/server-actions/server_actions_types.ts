@@ -1,9 +1,7 @@
 export interface CreatePaymentLinkResponseI {
-  data: {
-    _links: {
-      redirect: {
-        href: string;
-      };
+  _links: {
+    redirect: {
+      href: string;
     };
   };
 }
