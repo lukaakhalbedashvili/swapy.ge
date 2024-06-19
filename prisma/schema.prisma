@@ -8,10 +8,8 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
-model Post {
-  id        String     @default(cuid()) @id
-  title     String
-  content   String?
-  published Boolean @default(false)
-  authorId  String?
+// schema.prisma
+model Order {
+  id      String  @id
+  amount  Decimal
 }

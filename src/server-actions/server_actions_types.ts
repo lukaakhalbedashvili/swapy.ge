@@ -3,7 +3,11 @@ export interface CreatePaymentLinkResponseI {
     redirect: {
       href: string;
     };
+    details: {
+      href: string;
+    };
   };
+  id: string;
 }
 
 export enum PaymentMethods {

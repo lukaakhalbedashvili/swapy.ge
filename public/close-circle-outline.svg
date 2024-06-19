@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+  <!-- Circle background without stroke -->
+  <circle cx="256" cy="256" r="208" fill="#E75C50" />
+
+  <!-- X lines with stroke -->
+  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M320 320L192 192M192 320l128-128"/>
+</svg>
