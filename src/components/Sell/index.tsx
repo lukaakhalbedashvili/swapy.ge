@@ -29,16 +29,12 @@ const Sell = () => {
     },
     validationSchema,
     onSubmit: async ({ plusPointsToSell }) => {
-      const result = (
-        Math.floor((plusPointsToSell! / BOG_RATE) * 100) / 100
-      ).toFixed(2);
-
       const response = await getPaymentLinkAction({
         paymentMethod: PaymentMethods.bog_loyalty,
         requiredLariAmount: (plusPointsToSell! / BOG_RATE).toFixed(2),
       });
 
-      console.log(response.data._links.redirect.href);
+      console.log(response._links.redirect.href);
 
       // router.push(response.data._links.redirect.href);
     },
