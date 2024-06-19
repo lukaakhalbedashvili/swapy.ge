@@ -5,7 +5,7 @@ export const getRequestBody = (
   amount: string | number
 ) => {
   return {
-    callback_url: "https://example.com/callback",
+    callback_url: `${process.env.NEXT_APP_BASE_URL}/callback`,
     purchase_units: {
       currency: "GEL",
       total_amount: amount,
