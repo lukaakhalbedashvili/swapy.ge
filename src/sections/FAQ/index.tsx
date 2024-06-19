@@ -28,14 +28,14 @@ const FAQ = () => {
 
   return (
     <section
-      className="mt-[30%] w-full  flex items-center flex-col px-2"
+      className="mt-[30%] lg:mt-[10%] w-full  flex items-center flex-col px-2"
       id="ხშირად დასმული შეკითხვები"
     >
       <h1 className="w-full text-center flex justify-center  mb-10 ">
         ხშირად დასმული შეკითხვები
       </h1>
 
-      <div className="bg-body rounded-lg p-2 text-gray-400">
+      <div className="bg-body rounded-lg p-2 text-gray-400 lg:w-1/2">
         {faqs.map((faq, index) => (
           <CollapsibleFAQ
             key={index}

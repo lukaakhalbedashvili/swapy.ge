@@ -14,12 +14,15 @@ const Transactions = () => {
     useState<TransactionType>(TransactionType.SELL);
 
   return (
-    <section className="pt-[30%] w-full px-2" id="გაცვალე">
+    <section
+      className="pt-[30%] w-full px-2 lg:pt-[10%]  lg:w-1/2"
+      id="გაცვალე"
+    >
       <h1 className="w-full text-center flex justify-center  mb-10">
         მიიღე თანხა PLUS ქულების სანაცვლოდ
       </h1>
 
-      <div className="bg-body rounded-lg p-2">
+      <div className="bg-body rounded-lg p-2 lg:p-10">
         {/* <SwitchBetweenBtn
           onClickHandler={(type) => setSelectedTransactionType(type)}
           selectedTransactionType={selectedTransactionType}
