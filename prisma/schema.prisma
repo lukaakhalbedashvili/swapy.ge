@@ -10,6 +10,8 @@ datasource db {
 
 // schema.prisma
 model Order {
-  id      String  @id
+  id      String   @id @default(uuid())
   amount  Decimal
+  createdAt DateTime @default(now())
+  orderIdBOG String? @unique
 }

@@ -40,7 +40,7 @@ const Sell = () => {
 
       console.log(response);
 
-      // router.push(response.data._links.redirect.href);
+      // router.push(response._links.redirect.href);
     },
   });
 

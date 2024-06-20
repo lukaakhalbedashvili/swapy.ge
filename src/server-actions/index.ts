@@ -31,10 +31,7 @@ export const createTransaction = async () => {
   return "";
 };
 
-export const getTransactionReceipt = async (
-  href: string,
-  authToken: string
-) => {
+const getOrderReceipt = async (href: string, authToken: string) => {
   const res = await fetch(href, {
     method: "GET",
     headers: {
@@ -45,12 +42,17 @@ export const getTransactionReceipt = async (
   const body: { order_id: string; purchase_units: { request_amount: number } } =
     await res.json();
 
-  await prisma.order.create({
+  return body;
+};
+
+const createTransactionRecord = async ({ amount }: { amount: number }) => {
+  const response = await prisma.order.create({
     data: {
-      id: body.order_id,
-      amount: Number(body.purchase_units.request_amount),
+      amount: amount,
     },
   });
+
+  return response;
 };
 
 export const getPaymentLinkAction = async ({
@@ -60,6 +62,10 @@ export const getPaymentLinkAction = async ({
   "use server";
   const authToken = await getAuthToken();
 
+  const transactionResponse = await createTransactionRecord({
+    amount: Number(requiredLariAmount),
+  });
+
   const res = await fetch("https://api.bog.ge/payments/v1/ecommerce/orders", {
     method: "POST",
     headers: {
@@ -67,12 +73,38 @@ export const getPaymentLinkAction = async ({
       Authorization: `Bearer ${authToken}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(getRequestBody(paymentMethod, requiredLariAmount)),
+    body: JSON.stringify(
+      getRequestBody(paymentMethod, requiredLariAmount, transactionResponse.id)
+    ),
   });
 
   const body: CreatePaymentLinkResponseI = await res.json();
 
-  getTransactionReceipt(body._links.details.href, authToken);
+  const receipt = await getOrderReceipt(body._links.details.href, authToken);
+
+  await prisma.order.update({
+    where: {
+      id: transactionResponse.id,
+    },
+    data: {
+      orderIdBOG: receipt.order_id,
+    },
+  });
 
   return body;
+};
+
+export const getTransaction = async (transactionId: string) => {
+  try {
+    const transaction = await prisma.order.findUnique({
+      where: {
+        id: transactionId,
+      },
+    });
+
+    return transaction;
+  } catch (error: any) {
+    console.error(`Error fetching transaction: ${error.message}`);
+    throw error;
+  }
 };
