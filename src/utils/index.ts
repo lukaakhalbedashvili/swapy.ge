@@ -2,7 +2,8 @@ import { PaymentMethods } from "@/server-actions/server_actions_types";
 
 export const getRequestBody = (
   paymentMethod: PaymentMethods,
-  amount: string | number
+  amount: string | number,
+  transactionId: string
 ) => {
   return {
     callback_url: `https://plus-pi.vercel.app/api/payments/callback`,
@@ -18,8 +19,8 @@ export const getRequestBody = (
       ],
     },
     redirect_urls: {
-      fail: "https://example.com/fail",
-      success: "https://example.com/success",
+      fail: `${process.env.NEXT_APP_BASE_URL}/failure/${transactionId}`,
+      success: `${process.env.NEXT_APP_BASE_URL}/success/${transactionId}`,
     },
     payment_method: [paymentMethod],
   };
