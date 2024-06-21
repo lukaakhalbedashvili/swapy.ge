@@ -19,6 +19,7 @@ const config: Config = {
         disabledBTN: "#2b2e2e",
         error: "#e14a44",
         smallSecondaryTxt: "#414444",
+        success: "#1cbf62",
       },
     },
   },
