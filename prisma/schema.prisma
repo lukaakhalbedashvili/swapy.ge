@@ -14,4 +14,5 @@ model Order {
   amount  Decimal
   createdAt DateTime @default(now())
   orderIdBOG String? @unique
+  IBAN String? 
 }
