@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "syncDB": "npx prisma db push",
-    "prismaStudio": "npx prisma studio"
+    "prismaStudio": "npx prisma studio",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^5.15.0",
