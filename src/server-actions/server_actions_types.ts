@@ -24,4 +24,7 @@ export enum PaymentMethods {
 export interface getPaymentLinkActionPayloadI {
   requiredLariAmount: string | number;
   paymentMethod: PaymentMethods;
+  receiverIBAN: string;
+  plusPoints: number;
+  lariAmountTheyReceive: number;
 }
