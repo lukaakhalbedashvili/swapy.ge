@@ -18,24 +18,32 @@ const Sell = () => {
       .typeError("")
       .required("სავალდებულოა")
       .min(plusPointRate, `მინიმალური რაოდენობა ${plusPointRate} ქულაა`),
-    receivedMoney: Yup.number().typeError("").required("სავალდებულოა"),
-    govID: Yup.string()
+    receivedMoney: Yup.number()
+      .typeError("")
+      .min(1, "მინიმალური რაოდენობა 1 ლარია")
+      .required("სავალდებულოა"),
+    receiverIBAN: Yup.string()
       .required("სავალდებულოა")
-      .length(11, "შეიყვანეთ ვალიდური პირადი ნომერი")
-      .matches(/^\d{0,11}$/, "შეიყვანეთ ვალიდური პირადი ნომერი"),
+      .length(22, "შეიყვანეთ ვალიდური ანგარიშის ნომერი"),
+    // .matches(/^\d{0,22}$/, "შეიყვანეთ ვალიდური ანგარიშის ნომერი"),
   });
 
   const formik = useFormik({
     initialValues: {
       plusPointsToSell: undefined,
       receivedMoney: undefined,
-      govID: undefined,
+      receiverIBAN: undefined,
     },
     validationSchema,
     onSubmit: async ({ plusPointsToSell }) => {
       const response = await getPaymentLinkAction({
         paymentMethod: PaymentMethods.bog_loyalty,
         requiredLariAmount: (plusPointsToSell! / BOG_RATE).toFixed(2),
+        receiverIBAN: values.receiverIBAN!,
+        plusPoints: Number(plusPointsToSell),
+        lariAmountTheyReceive: Number(
+          (values.plusPointsToSell! / plusPointRate).toFixed(2)
+        ),
       });
 
       console.log(response);
@@ -97,13 +105,13 @@ const Sell = () => {
       />
 
       <Input
-        placeholder="პირადი ნომერი"
+        placeholder="მიმღები ანგარიშის ნომერი"
         type="string"
-        value={values.govID}
-        name="govID"
+        value={values.receiverIBAN}
+        name="receiverIBAN"
         onBlurHandler={handleBlur}
         onChange={handleChange}
-        errorMessage={touched.govID && errors.govID}
+        errorMessage={touched.receiverIBAN && errors.receiverIBAN}
         inputMode="numeric"
       />
 

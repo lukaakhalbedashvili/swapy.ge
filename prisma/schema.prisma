@@ -9,10 +9,12 @@ datasource db {
 }
 
 // schema.prisma
-model Order {
+model Transaction {
   id      String   @id @default(uuid())
-  amount  Decimal
+  paidPlusPoints  Decimal?
+  paidPlusPointsInLari  Decimal?
+  lariAmountTheyReceive Decimal?
+  receiverIBAN String
   createdAt DateTime @default(now())
   orderIdBOG String? @unique
-  IBAN String? 
 }

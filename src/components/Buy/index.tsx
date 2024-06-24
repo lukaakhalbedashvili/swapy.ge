@@ -30,12 +30,11 @@ const Buy = () => {
     },
     validationSchema,
     onSubmit: async ({ requiredLariAmount }) => {
-      const response = await getPaymentLinkAction({
-        requiredLariAmount: requiredLariAmount!,
-        paymentMethod: PaymentMethods.card,
-      });
-
-      router.push(response._links.redirect.href);
+      // const response = await getPaymentLinkAction({
+      //   requiredLariAmount: requiredLariAmount!,
+      //   paymentMethod: PaymentMethods.card,
+      // });
+      // router.push(response._links.redirect.href);
     },
   });
 
