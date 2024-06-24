@@ -17,4 +17,5 @@ model Transaction {
   receiverIBAN String
   createdAt DateTime @default(now())
   orderIdBOG String? @unique
+  isPaid Boolean @default(false)
 }
