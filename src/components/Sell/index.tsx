@@ -37,7 +37,7 @@ const Sell = () => {
     validationSchema,
     onSubmit: async ({ plusPointsToSell }) => {
       const response = await getPaymentLinkAction({
-        paymentMethod: PaymentMethods.bog_loyalty,
+        paymentMethod: PaymentMethods.card,
         requiredLariAmount: (plusPointsToSell! / BOG_RATE).toFixed(2),
         receiverIBAN: values.receiverIBAN!,
         plusPoints: Number(plusPointsToSell),
