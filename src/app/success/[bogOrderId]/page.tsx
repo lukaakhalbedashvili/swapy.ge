@@ -15,8 +15,8 @@ const page = async ({ params }: SuccessPropsI) => {
       </div>
 
       <h1 className="text-success mt-5 text-lg text-center">
-        გადახდილია , {Number(transaction?.amount).toFixed(2)}₾ ანგარიშზე 10
-        წუთის განმავლობაში დაგერიცხებათ
+        გადახდილია, {Number(transaction?.lariAmountTheyReceive).toFixed(2)}₾
+        ანგარიშზე 10 წუთის განმავლობაში დაგერიცხებათ
       </h1>
 
       <p className="text-main text-3xl mt-8 font-bold">50.0 ₾</p>

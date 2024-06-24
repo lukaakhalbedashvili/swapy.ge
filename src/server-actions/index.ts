@@ -45,10 +45,23 @@ const getOrderReceipt = async (href: string, authToken: string) => {
   return body;
 };
 
-const createTransactionRecord = async ({ amount }: { amount: number }) => {
-  const response = await prisma.order.create({
+const createTransactionRecord = async ({
+  amount,
+  receiverIBAN,
+  plusPoints,
+  lariAmountTheyReceive,
+}: {
+  amount: number;
+  receiverIBAN: string;
+  plusPoints: number;
+  lariAmountTheyReceive: number;
+}) => {
+  const response = await prisma.transaction.create({
     data: {
-      amount: amount,
+      paidPlusPointsInLari: amount,
+      receiverIBAN,
+      paidPlusPoints: plusPoints,
+      lariAmountTheyReceive,
     },
   });
 
@@ -58,12 +71,18 @@ const createTransactionRecord = async ({ amount }: { amount: number }) => {
 export const getPaymentLinkAction = async ({
   requiredLariAmount,
   paymentMethod,
+  receiverIBAN,
+  plusPoints,
+  lariAmountTheyReceive,
 }: getPaymentLinkActionPayloadI): Promise<CreatePaymentLinkResponseI> => {
   "use server";
   const authToken = await getAuthToken();
 
   const transactionResponse = await createTransactionRecord({
     amount: Number(requiredLariAmount),
+    receiverIBAN,
+    plusPoints,
+    lariAmountTheyReceive,
   });
 
   const res = await fetch("https://api.bog.ge/payments/v1/ecommerce/orders", {
@@ -82,7 +101,7 @@ export const getPaymentLinkAction = async ({
 
   const receipt = await getOrderReceipt(body._links.details.href, authToken);
 
-  await prisma.order.update({
+  await prisma.transaction.update({
     where: {
       id: transactionResponse.id,
     },
@@ -96,7 +115,7 @@ export const getPaymentLinkAction = async ({
 
 export const getTransaction = async (transactionId: string) => {
   try {
-    const transaction = await prisma.order.findUnique({
+    const transaction = await prisma.transaction.findUnique({
       where: {
         id: transactionId,
       },
