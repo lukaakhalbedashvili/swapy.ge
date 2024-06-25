@@ -105,7 +105,7 @@ const Sell = () => {
       />
 
       <Input
-        placeholder="მიმღები ანგარიშის ნომერი"
+        placeholder="მიმღები ანგარიშის ნომერი "
         type="string"
         value={values.receiverIBAN}
         name="receiverIBAN"
