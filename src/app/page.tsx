@@ -16,22 +16,29 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center bg-background text-white">
-      <header className="flex items-center w-full px-4 bg-header sticky top-0 z-10 py-3">
-        <nav className="w-full">
-          <ul className="flex items-center w-full">
-            <li>
-              <Image src="/swapy-logo.svg" width={40} height={40} alt="swapy" />
+      <header className="flex items-center w-full px-4 bg-header sticky top-0 z-10 py-3 lg:px-10">
+        <nav className="w-full items-center flex">
+          <ul className="flex items-center w-full ">
+            <li className="cursor-pointer">
+              <Link href="/">
+                <Image
+                  src="/swapy-logo-2.svg"
+                  width={40}
+                  height={40}
+                  alt="swapy"
+                />
+              </Link>
             </li>
 
-            <li className="ml-4">
+            <li className="ml-4 lg:ml-10">
               <Link href="#გაცვალე">გაცვალე</Link>
             </li>
 
-            <li className="ml-4">
+            <li className="ml-4 lg:ml-10">
               <Link href="#ჩვენს შესახებ">ჩვენს შესახებ</Link>
             </li>
 
-            <li className="ml-4">
+            <li className="ml-4 lg:ml-10">
               <a href="#კონტაქტი">კონტაქტი</a>
             </li>
           </ul>
