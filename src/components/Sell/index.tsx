@@ -68,7 +68,7 @@ const Sell = () => {
   }, [values, validateForm]);
 
   return (
-    <form onSubmit={handleSubmit} className="mt-6">
+    <form onSubmit={handleSubmit} className="mt-6" autoComplete="off">
       <Input
         placeholder="გასაყიდი პლუს ქულების რაოდენობა"
         type="number"
@@ -121,7 +121,9 @@ const Sell = () => {
 
       {values.receivedMoney && (
         <p className=" mt-4 text-white">
-          ანგარიშზე დაგერიცხებათ {values.receivedMoney} ₾
+          {`ანგარიშზე  ${
+            values.receiverIBAN && "( " + values.receiverIBAN + " )"
+          } დაგერიცხებათ ${values.receivedMoney} ₾`}
         </p>
       )}
 
