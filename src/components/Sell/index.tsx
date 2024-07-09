@@ -119,7 +119,7 @@ const Sell = () => {
         {plusPointRate} Plus ქულა = 1.00 ₾
       </p>
 
-      {values.receivedMoney && (
+      {values.receivedMoney && values.receiverIBAN && !errors.receiverIBAN && (
         <p className=" mt-4 text-white">
           {`ანგარიშზე  ${
             values.receiverIBAN && "( " + values.receiverIBAN + " )"
