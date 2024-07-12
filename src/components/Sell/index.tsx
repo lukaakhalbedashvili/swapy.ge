@@ -36,9 +36,13 @@ const Sell = () => {
     },
     validationSchema,
     onSubmit: async ({ plusPointsToSell }) => {
+      let factor = Math.pow(10, 2); // 10^2 = 100
+      let roundedFloorNumber =
+        Math.floor((plusPointsToSell! / BOG_RATE) * factor) / factor;
+
       const response = await getPaymentLinkAction({
         paymentMethod: PaymentMethods.bog_loyalty,
-        requiredLariAmount: (plusPointsToSell! / BOG_RATE).toFixed(2),
+        requiredLariAmount: roundedFloorNumber,
         receiverIBAN: values.receiverIBAN!,
         plusPoints: Number(plusPointsToSell),
         lariAmountTheyReceive: Number(
@@ -46,9 +50,7 @@ const Sell = () => {
         ),
       });
 
-      console.log(response);
-
-      // router.push(response._links.redirect.href);
+      router.push(response._links.redirect.href);
     },
   });
 
