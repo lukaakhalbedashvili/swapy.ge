@@ -18,4 +18,5 @@ model Transaction {
   createdAt DateTime @default(now())
   orderIdBOG String? @unique
   isPaid Boolean @default(false)
+  phone String @default("")
 }

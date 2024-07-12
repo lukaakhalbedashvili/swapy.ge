@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "../Input";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -25,17 +25,24 @@ const Sell = () => {
     receiverIBAN: Yup.string()
       .required("სავალდებულოა")
       .length(22, "შეიყვანეთ ვალიდური ანგარიშის ნომერი"),
-    // .matches(/^\d{0,22}$/, "შეიყვანეთ ვალიდური ანგარიშის ნომერი"),
+    phone: Yup.string()
+      .required("სავალდებულოა")
+      .length(9, "შეიყვანეთ ვალიდური ანგარიშის ნომერი"),
   });
+
+  const [isLinkLoading, setIsLinkLoading] = useState<boolean>(false);
 
   const formik = useFormik({
     initialValues: {
       plusPointsToSell: undefined,
       receivedMoney: undefined,
       receiverIBAN: undefined,
+      phone: undefined,
     },
     validationSchema,
     onSubmit: async ({ plusPointsToSell }) => {
+      setIsLinkLoading(true);
+
       let factor = Math.pow(10, 2); // 10^2 = 100
       let roundedFloorNumber =
         Math.floor((plusPointsToSell! / BOG_RATE) * factor) / factor;
@@ -48,6 +55,7 @@ const Sell = () => {
         lariAmountTheyReceive: Number(
           (values.plusPointsToSell! / plusPointRate).toFixed(2)
         ),
+        phone: values.phone!,
       });
 
       router.push(response._links.redirect.href);
@@ -117,6 +125,17 @@ const Sell = () => {
         inputMode="numeric"
       />
 
+      <Input
+        placeholder="თქვენი ტელეფონის ნომერი "
+        type="string"
+        value={values.phone}
+        name="phone"
+        onBlurHandler={handleBlur}
+        onChange={handleChange}
+        errorMessage={touched.phone && errors.phone}
+        inputMode="numeric"
+      />
+
       <p className="text-smallSecondaryTxt">
         {plusPointRate} Plus ქულა = 1.00 ₾
       </p>
@@ -131,9 +150,12 @@ const Sell = () => {
 
       <div>
         <button className={`p-6 bg-main w-full rounded-lg mt-10`} type="submit">
-          {`გადახდა ( ${
-            values.plusPointsToSell ? values.plusPointsToSell : 0
-          } PLUS ქულა )`}
+          {!isLinkLoading &&
+            `გადახდა ( ${
+              values.plusPointsToSell ? values.plusPointsToSell : 0
+            } PLUS ქულა )`}
+
+          {isLinkLoading && "იტვირთება..."}
         </button>
       </div>
     </form>

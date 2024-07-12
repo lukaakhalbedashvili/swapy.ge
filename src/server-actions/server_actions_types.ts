@@ -27,4 +27,5 @@ export interface getPaymentLinkActionPayloadI {
   receiverIBAN: string;
   plusPoints: number;
   lariAmountTheyReceive: number;
+  phone: string;
 }

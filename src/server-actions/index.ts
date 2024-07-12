@@ -50,11 +50,13 @@ const createTransactionRecord = async ({
   receiverIBAN,
   plusPoints,
   lariAmountTheyReceive,
+  phone,
 }: {
   amount: number;
   receiverIBAN: string;
   plusPoints: number;
   lariAmountTheyReceive: number;
+  phone: string;
 }) => {
   const response = await prisma.transaction.create({
     data: {
@@ -62,6 +64,7 @@ const createTransactionRecord = async ({
       receiverIBAN,
       paidPlusPoints: plusPoints,
       lariAmountTheyReceive,
+      phone,
     },
   });
 
@@ -74,6 +77,7 @@ export const getPaymentLinkAction = async ({
   receiverIBAN,
   plusPoints,
   lariAmountTheyReceive,
+  phone,
 }: getPaymentLinkActionPayloadI): Promise<CreatePaymentLinkResponseI> => {
   "use server";
   const authToken = await getAuthToken();
@@ -83,6 +87,7 @@ export const getPaymentLinkAction = async ({
     receiverIBAN,
     plusPoints,
     lariAmountTheyReceive,
+    phone,
   });
 
   const res = await fetch("https://api.bog.ge/payments/v1/ecommerce/orders", {
