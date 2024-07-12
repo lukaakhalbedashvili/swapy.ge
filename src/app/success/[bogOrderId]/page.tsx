@@ -15,11 +15,13 @@ const page = async ({ params }: SuccessPropsI) => {
       </div>
 
       <h1 className="text-success mt-5 text-lg text-center">
-        გადახდილია, {Number(transaction?.lariAmountTheyReceive).toFixed(2)}₾
+        გადახდილია, {Number(transaction?.lariAmountTheyReceive).toFixed(2)} ₾
         ანგარიშზე 10 წუთის განმავლობაში დაგერიცხებათ
       </h1>
 
-      <p className="text-main text-3xl mt-8 font-bold">50.0 ₾</p>
+      <p className="text-main text-3xl mt-8 font-bold">
+        {String(transaction?.paidPlusPoints)} ქულა
+      </p>
     </div>
   );
 };
