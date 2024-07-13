@@ -22,12 +22,10 @@ const Sell = () => {
       .typeError("")
       .min(1, "მინიმალური რაოდენობა 1 ლარია")
       .required("სავალდებულოა"),
-    receiverIBAN: Yup.string()
-      .required("სავალდებულოა")
-      .length(22, "შეიყვანეთ ვალიდური ანგარიშის ნომერი"),
+    receiverIBAN: Yup.string().required("სავალდებულოა"),
     phone: Yup.string()
       .required("სავალდებულოა")
-      .length(9, "შეიყვანეთ ვალიდური ანგარიშის ნომერი"),
+      .length(9, "შეიყვანეთ ვალიდური ნომერი"),
   });
 
   const [isLinkLoading, setIsLinkLoading] = useState<boolean>(false);
