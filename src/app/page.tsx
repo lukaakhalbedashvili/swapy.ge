@@ -1,3 +1,4 @@
+import AreWeScammers from "@/components/AreWeScammers";
 import AboutUs from "@/sections/AboutUs";
 import Contact from "@/sections/Contact";
 import FAQ from "@/sections/FAQ";
@@ -34,12 +35,16 @@ export default function Home() {
               <Link href="#გაცვალე">გაცვალე</Link>
             </li>
 
-            <li className="ml-4 lg:ml-10">
+            <li className="ml-4 lg:ml-10 text-nowrap hidden lg:visible">
               <Link href="#ჩვენს შესახებ">ჩვენს შესახებ</Link>
             </li>
 
             <li className="ml-4 lg:ml-10">
               <a href="#კონტაქტი">კონტაქტი</a>
+            </li>
+
+            <li className="ml-4 lg:ml-10 text-nowrap">
+              <a href="#სკამერები ვართ?">სკამერები ვართ?</a>
             </li>
           </ul>
         </nav>
@@ -52,6 +57,8 @@ export default function Home() {
       <AboutUs />
 
       <Team />
+
+      <AreWeScammers />
 
       <Contact />
     </main>
