@@ -120,7 +120,6 @@ const Sell = () => {
         onBlurHandler={handleBlur}
         onChange={handleChange}
         errorMessage={touched.receiverIBAN && errors.receiverIBAN}
-        inputMode="numeric"
       />
 
       <Input
