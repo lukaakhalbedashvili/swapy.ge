@@ -22,7 +22,7 @@ const Sell = () => {
       .min(100, `მინიმალური რაოდენობა ${plusPointRate} ქულაა`),
     receivedMoney: Yup.number()
       .typeError("")
-      .min(1, "მინიმალური რაოდენობა 1 ლარია")
+      .min(0, "მინიმალური რაოდენობა 1 ლარია")
       .required("სავალდებულოა"),
     receiverIBAN: Yup.string().required("სავალდებულოა"),
     phone: Yup.string()
