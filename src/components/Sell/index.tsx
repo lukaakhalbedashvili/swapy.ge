@@ -17,7 +17,9 @@ const Sell = () => {
     plusPointsToSell: Yup.number()
       .typeError("")
       .required("სავალდებულოა")
-      .min(plusPointRate, `მინიმალური რაოდენობა ${plusPointRate} ქულაა`),
+
+      //დროებით
+      .min(100, `მინიმალური რაოდენობა ${plusPointRate} ქულაა`),
     receivedMoney: Yup.number()
       .typeError("")
       .min(1, "მინიმალური რაოდენობა 1 ლარია")
