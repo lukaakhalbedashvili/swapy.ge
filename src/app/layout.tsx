@@ -8,7 +8,7 @@ import localFont from "next/font/local";
 const myFont = localFont({ src: "../../public/mark-geo.woff2" });
 
 export const metadata: Metadata = {
-  title: "swapy / სვაპი | გადაცვალე PLUS ქულები ლარში ₾",
+  title: "swapy / სვაპი | გადაცვალე PLUS ქულები ლარში",
   description: "გაცვალე პლუს ქულები ლარში",
 };
 
