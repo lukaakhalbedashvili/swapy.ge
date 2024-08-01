@@ -31,11 +31,11 @@ export default function Home() {
               </Link>
             </li>
 
-            <li className="ml-4 lg:ml-10">
+            <li className="ml-4 lg:ml-10  hidden lg:inline">
               <Link href="#გაცვალე">გაცვალე</Link>
             </li>
 
-            <li className="ml-4 lg:ml-10 text-nowrap hidden lg:visible">
+            <li className="ml-4 lg:ml-10 text-nowrap hidden lg:inline">
               <Link href="#ჩვენს შესახებ">ჩვენს შესახებ</Link>
             </li>
 
