@@ -76,7 +76,6 @@ export const getPaymentLinkAction = async ({
   lariAmountTheyReceive,
   phone,
 }: getPaymentLinkActionPayloadI): Promise<CreatePaymentLinkResponseI> => {
-  "use server";
   const authToken = await getAuthToken();
 
   sendEmailToMe("გაგიტესტეს");
@@ -103,18 +102,26 @@ export const getPaymentLinkAction = async ({
 
   const body: CreatePaymentLinkResponseI = await res.json();
 
-  const receipt = await getOrderReceipt(body._links.details.href, authToken);
+  updateIdBOG(body._links.details.href, authToken, transactionResponse.id);
+
+  return body;
+};
+
+const updateIdBOG = async (
+  receiptHref: string,
+  authToken: string,
+  transactionResponseId: string
+) => {
+  const receipt = await getOrderReceipt(receiptHref, authToken);
 
   await prisma.transaction.update({
     where: {
-      id: transactionResponse.id,
+      id: transactionResponseId,
     },
     data: {
       orderIdBOG: receipt.order_id,
     },
   });
-
-  return body;
 };
 
 export const getTransaction = async (transactionId: string) => {
@@ -144,7 +151,7 @@ export const sendEmailToMe = async (text: string) => {
   let mailOptions = {
     from: "mock123123@outlook.com",
     to: "lukaakhalbedashvili@gmail.com",
-    subject: "დაგირიცხეს Swapy ზე",
+    subject: text,
     text,
   };
 
