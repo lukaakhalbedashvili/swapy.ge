@@ -6,6 +6,7 @@ import {
   getPaymentLinkActionPayloadI,
 } from "./server_actions_types";
 import prisma from "../../lib/prisma";
+import nodemailer from "nodemailer";
 
 const getAuthToken = async () => {
   const res = await fetch(
@@ -25,10 +26,6 @@ const getAuthToken = async () => {
   const data = await res.json();
 
   return data.access_token;
-};
-
-export const createTransaction = async () => {
-  return "";
 };
 
 const getOrderReceipt = async (href: string, authToken: string) => {
@@ -82,6 +79,8 @@ export const getPaymentLinkAction = async ({
   "use server";
   const authToken = await getAuthToken();
 
+  sendEmailToMe("გაგიტესტეს");
+
   const transactionResponse = await createTransactionRecord({
     amount: Number(requiredLariAmount),
     receiverIBAN,
@@ -131,4 +130,27 @@ export const getTransaction = async (transactionId: string) => {
     console.error(`Error fetching transaction: ${error.message}`);
     throw error;
   }
+};
+
+export const sendEmailToMe = async (text: string) => {
+  let transporter = nodemailer.createTransport({
+    service: "Outlook",
+    auth: {
+      user: "mock123123@outlook.com",
+      pass: process.env.OUTLOOK_PASS,
+    },
+  });
+
+  let mailOptions = {
+    from: "mock123123@outlook.com",
+    to: "lukaakhalbedashvili@gmail.com",
+    subject: "დაგირიცხეს Swapy ზე",
+    text,
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return console.log(error);
+    }
+  });
 };
