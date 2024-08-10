@@ -16,7 +16,7 @@ const CollapsibleFAQ = ({
   return (
     <div onClick={toggleFAQ}>
       <button
-        className={`w-full text-left focus:outline-none p-4 pl-2 lg:text-center ${
+        className={`w-full focus:outline-none p-4 pl-2 text-center ${
           isOpen && "pt-12"
         }`}
       >

@@ -1,5 +1,6 @@
 "use client";
 import Buy from "@/components/Buy";
+import DirectTransfer from "@/components/DirectTransfer";
 import Sell from "@/components/Sell";
 import SwitchBetweenBtn from "@/components/SwitchBetweenBtn";
 import React, { useState } from "react";
@@ -19,13 +20,15 @@ const Transactions = () => {
         მიიღე თანხა PLUS ქულების სანაცვლოდ
       </h1>
 
-      <div className="bg-body rounded-lg p-2 lg:p-10">
+      <div className="bg-body rounded-lg p-2 lg:p-10 relative pb-10">
         {/* <SwitchBetweenBtn
           onClickHandler={(type) => setSelectedTransactionType(type)}
           selectedTransactionType={selectedTransactionType}
           /> */}
 
-        {selectedTransactionType === TransactionType.BUY ? <Buy /> : <Sell />}
+        {/* {selectedTransactionType === TransactionType.BUY ? <Buy /> : <Sell />} */}
+
+        <DirectTransfer />
       </div>
     </section>
   );
