@@ -19,6 +19,7 @@
     "nodemailer": "^6.9.14",
     "react": "^18",
     "react-dom": "^18",
+    "swiper": "^11.1.9",
     "yup": "^1.4.0"
   },
   "devDependencies": {
