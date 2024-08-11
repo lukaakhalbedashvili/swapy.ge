@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Alert from "../Alert";
 import Calculator from "../Calculator";
 import Dialog from "../Modal";
+import { Slider } from "../Slider";
 
 const DirectTransfer = () => {
   const [isAlert, setIsAlert] = useState<boolean>();
@@ -59,12 +60,8 @@ const DirectTransfer = () => {
         />
       </button>
 
-      <Dialog isOpen={isDialogOpen}>
-        <div>
-          <p>asxjnaskxk</p>
-
-          <button onClick={() => setIsDialogOpen(false)}>close</button>
-        </div>
+      <Dialog isOpen={isDialogOpen} handleClose={() => setIsDialogOpen(false)}>
+        <Slider />
       </Dialog>
     </div>
   );
