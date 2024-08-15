@@ -27,9 +27,7 @@ const Team = () => {
             />
           </div>
 
-          <h2 className="text-secondary mt-4 text-center">
-            ლუკა ახალბედაშვილი
-          </h2>
+          <h2 className="text-white mt-4 text-center">ლუკა ახალბედაშვილი</h2>
         </Link>
 
         <Link
@@ -46,7 +44,7 @@ const Team = () => {
             />
           </div>
 
-          <h2 className="text-secondary mt-4 text-center">ლაშა მარხვაიძე</h2>
+          <h2 className="text-white mt-4 text-center">ლაშა მარხვაიძე</h2>
         </Link>
       </div>
     </section>
