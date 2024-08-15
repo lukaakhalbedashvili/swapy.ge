@@ -13,7 +13,7 @@ const config: Config = {
         background: "#191a1a",
         header: "#3d3e3e",
         body: "#242727",
-        main: "#ff8345",
+        main: "#4edd98",
         secondary: "#c3682c",
         active: "#ff7f29",
         disabledBTN: "#2b2e2e",
