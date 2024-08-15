@@ -14,7 +14,7 @@ export const Slider = () => {
       <style jsx global>{`
         .swiper-button-next::after,
         .swiper-button-prev::after {
-          color: #ff8345; /* Arrow color */
+          color: #4edd98; /* Arrow color */
           font-size: 40px; /* Arrow size */
         }
       `}</style>

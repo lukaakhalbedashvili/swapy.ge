@@ -22,12 +22,7 @@ export default function Home() {
           <ul className="flex items-center w-full ">
             <li className="cursor-pointer">
               <Link href="/">
-                <Image
-                  src="/swapy-logo-2.svg"
-                  width={40}
-                  height={40}
-                  alt="swapy"
-                />
+                <Image src="/logo-alt.svg" width={20} height={20} alt="swapy" />
               </Link>
             </li>
 
