@@ -33,7 +33,7 @@ export const Slider = () => {
       >
         <SwiperSlide>
           <Image
-            src="/instruction1.png"
+            src="/instruction_1.jpg"
             fill
             alt="instruction1"
             objectFit="contain"
@@ -52,7 +52,22 @@ export const Slider = () => {
 
         <SwiperSlide>
           <Image
-            src="/instruction2.png"
+            src="/instruction_2.png"
+            fill
+            alt="instruction2"
+            objectFit="contain"
+          />
+
+          <div className="absolute bottom-0 p-4 bg-body text-white py-20 w-full lg:flex lg:justify-center">
+            <ol className="list-decimal pl-5 lg:w-fit">
+              <li>დააჭირეთ ისრით მონიშნულ სექციას</li>
+            </ol>
+          </div>
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <Image
+            src="/instruction_3.png"
             fill
             alt="instruction2"
             objectFit="contain"
