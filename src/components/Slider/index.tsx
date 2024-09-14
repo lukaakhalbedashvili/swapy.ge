@@ -82,7 +82,7 @@ export const Slider = () => {
 
         <SwiperSlide>
           <Image
-            src="/instruction3.png"
+            src="/instruction_4.png"
             fill
             alt="instruction2"
             objectFit="contain"
