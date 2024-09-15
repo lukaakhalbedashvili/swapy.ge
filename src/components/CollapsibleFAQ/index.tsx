@@ -20,7 +20,11 @@ const CollapsibleFAQ = ({
           isOpen && "pt-12"
         }`}
       >
-        {question}
+        {/* {question} */}
+        <div
+          // className="p-4 pl-2 pt-0 border-b pb-12 mt-5 lg:text-center"
+          dangerouslySetInnerHTML={{ __html: question }}
+        />
       </button>
 
       <div
