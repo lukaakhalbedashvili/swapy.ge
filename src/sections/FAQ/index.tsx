@@ -14,8 +14,8 @@ const FAQ = () => {
       answer: "ტრანზაქციის დასრულების შემდეგ, 10 წუთის განმავლობაში.",
     },
     {
-      question: "როგორ ხდება პლუს ქულების გაყიდვა?",
-      answer: `პლუს ქულების გაყიდვა / გადაცვლის ინსტრუქცია ზედა სექციაში შეგიძლიათ იხილოთ.`,
+      question: "როგორ ხდება პლუს <em>ქულების გაყიდვა</em>?",
+      answer: `პლუს <em>ქულების გაყიდვა</em> / გადაცვლის ინსტრუქცია ზედა სექციაში შეგიძლიათ იხილოთ.`,
     },
     {
       question: "სად დამერიცხება თანხა?",
@@ -29,9 +29,9 @@ const FAQ = () => {
       className="mt-[30%] lg:mt-[10%] w-full  flex items-center flex-col px-2"
       id="ხშირად დასმული შეკითხვები"
     >
-      <h1 className="w-full text-center flex justify-center  mb-10 ">
+      <h2 className="w-full text-center flex justify-center  mb-10 ">
         ხშირად დასმული შეკითხვები
-      </h1>
+      </h2>
 
       <div className="bg-body rounded-lg p-2 text-gray-400 lg:w-1/2">
         {faqs.map((faq, index) => (

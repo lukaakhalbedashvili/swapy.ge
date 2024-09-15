@@ -4,7 +4,6 @@ import "./globals.css";
 
 import localFont from "next/font/local";
 
-// Font files can be colocated inside of `pages`
 const myFont = localFont({ src: "../../public/mark-geo.woff2" });
 
 export const metadata: Metadata = {

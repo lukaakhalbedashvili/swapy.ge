@@ -11,10 +11,12 @@ const DirectTransfer = () => {
 
   return (
     <div className="text-center px-2 text  font-bold mt-10 ">
-      <p className="leading-7 lg:leading-9">
+      <h2 className="leading-7 lg:leading-9">
         გადმორიცხე ნებისმიერი რაოდენობის PLUS ქულა პირად ნომერზე :{" "}
-      </p>
+      </h2>
+
       {isAlert && <Alert text="დაკოპირდა" onClose={() => setIsAlert(false)} />}
+
       <div
         className="text-main whitespace-nowrap flex items-center justify-center cursor-pointer leading-7 lg:leading-9"
         onClick={async () => {
