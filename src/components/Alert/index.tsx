@@ -15,7 +15,7 @@ const Alert = ({ text, onClose }: AlertI) => {
   }, [onClose]);
 
   return (
-    <div className="fixed left-5 bottom-5 bg-slate-50 p-5 rounded-md text-black lg:p-">
+    <div className="fixed left-5 bottom-5 bg-slate-50 p-5 rounded-md text-black z-50">
       {text}
     </div>
   );

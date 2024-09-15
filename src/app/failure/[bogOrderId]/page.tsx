@@ -21,9 +21,9 @@ const page = async ({ params }: FailurePropsI) => {
         />
       </div>
 
-      <h1 className="text-error text-center px-8 mt-[8%] lg:mt-4">{`ოპერაცია ვერ შესრულდა, გადასახდელი თანხა : ${Number(
+      <h2 className="text-error text-center px-8 mt-[8%] lg:mt-4">{`ოპერაცია ვერ შესრულდა, გადასახდელი თანხა : ${Number(
         transaction?.paidPlusPointsInLari
-      ).toFixed(2)} ₾`}</h1>
+      ).toFixed(2)} ₾`}</h2>
 
       <Link href={"/"} className="mt-[10%] text-main lg:mt-12">
         თავიდან ცადეთ
