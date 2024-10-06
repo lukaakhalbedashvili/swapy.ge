@@ -27,8 +27,8 @@ const FAQ = () => {
 
   return (
     <section
-      className="mt-[30%] lg:mt-[10%] w-full  flex items-center flex-col px-2"
-      id="ხშირად დასმული შეკითხვები"
+      className="mt-[30%] lg:mt-[10%] w-full  flex items-center flex-col py-16"
+      id="ხშირადდასმულიშეკითხვები"
     >
       <h2 className="w-full text-center flex justify-center  mb-10 ">
         ხშირად დასმული შეკითხვები
