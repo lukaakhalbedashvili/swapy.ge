@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 
+import { GoogleAnalytics } from "@next/third-parties/google";
+
 import localFont from "next/font/local";
 
 const myFont = localFont({ src: "../../public/mark-geo.woff2" });
@@ -23,6 +25,8 @@ export default function RootLayout({
       <body className={myFont.className}>
         {children}
         <Analytics />
+
+        <GoogleAnalytics gaId="G-WWWW1XHYKH" />
       </body>
     </html>
   );
