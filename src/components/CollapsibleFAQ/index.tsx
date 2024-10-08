@@ -16,11 +16,15 @@ const CollapsibleFAQ = ({
   return (
     <div onClick={toggleFAQ}>
       <button
-        className={`w-full text-left focus:outline-none p-4 pl-2 lg:text-center ${
+        className={`w-full focus:outline-none p-4 pl-2 text-center ${
           isOpen && "pt-12"
         }`}
       >
-        {question}
+        {/* {question} */}
+        <div
+          // className="p-4 pl-2 pt-0 border-b pb-12 mt-5 lg:text-center"
+          dangerouslySetInnerHTML={{ __html: question }}
+        />
       </button>
 
       <div

@@ -6,6 +6,7 @@ import {
   getPaymentLinkActionPayloadI,
 } from "./server_actions_types";
 import prisma from "../../lib/prisma";
+import nodemailer from "nodemailer";
 
 const getAuthToken = async () => {
   const res = await fetch(
@@ -25,10 +26,6 @@ const getAuthToken = async () => {
   const data = await res.json();
 
   return data.access_token;
-};
-
-export const createTransaction = async () => {
-  return "";
 };
 
 const getOrderReceipt = async (href: string, authToken: string) => {
@@ -79,8 +76,9 @@ export const getPaymentLinkAction = async ({
   lariAmountTheyReceive,
   phone,
 }: getPaymentLinkActionPayloadI): Promise<CreatePaymentLinkResponseI> => {
-  "use server";
   const authToken = await getAuthToken();
+
+  sendEmailToMe("გაგიტესტეს");
 
   const transactionResponse = await createTransactionRecord({
     amount: Number(requiredLariAmount),
@@ -104,18 +102,26 @@ export const getPaymentLinkAction = async ({
 
   const body: CreatePaymentLinkResponseI = await res.json();
 
-  const receipt = await getOrderReceipt(body._links.details.href, authToken);
+  updateIdBOG(body._links.details.href, authToken, transactionResponse.id);
+
+  return body;
+};
+
+const updateIdBOG = async (
+  receiptHref: string,
+  authToken: string,
+  transactionResponseId: string
+) => {
+  const receipt = await getOrderReceipt(receiptHref, authToken);
 
   await prisma.transaction.update({
     where: {
-      id: transactionResponse.id,
+      id: transactionResponseId,
     },
     data: {
       orderIdBOG: receipt.order_id,
     },
   });
-
-  return body;
 };
 
 export const getTransaction = async (transactionId: string) => {
@@ -131,4 +137,27 @@ export const getTransaction = async (transactionId: string) => {
     console.error(`Error fetching transaction: ${error.message}`);
     throw error;
   }
+};
+
+export const sendEmailToMe = async (text: string) => {
+  let transporter = nodemailer.createTransport({
+    service: "Outlook",
+    auth: {
+      user: "mock123123@outlook.com",
+      pass: process.env.OUTLOOK_PASS,
+    },
+  });
+
+  let mailOptions = {
+    from: "mock123123@outlook.com",
+    to: "lukaakhalbedashvili@gmail.com",
+    subject: text,
+    text,
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return console.log(error);
+    }
+  });
 };

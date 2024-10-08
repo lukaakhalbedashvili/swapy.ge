@@ -7,16 +7,16 @@ const AboutUs = () => {
       className="pt-[20%] lg:pt-[10%] w-full  flex items-center flex-col px-2 pb-20 lg:w-1/2 lg:text-center"
       id="ჩვენს შესახებ"
     >
-      <h1 className="w-full text-center flex justify-center  mb-10 ">
+      <h2 className="w-full text-center flex justify-center  mb-10 ">
         ჩვენს შესახებ
-      </h1>
+      </h2>
 
-      <div className="bg-body rounded-lg p-2 lg:p-10 text-gray-400">
+      <div className="bg-body rounded-lg p-2 lg:p-10 text-gray-400 text-center">
         swapy / სვაპი პლატფორმაა რომლის მიზანიც პლუს ქულების გაცვლის პროცესის
         გამარტივებაა.
         <br />
         <br />
-        სერვისი ამ წლის დასაწყისში ჩაეშვა და ამ დროისთის 200,000 - ამდე პლუს
+        სერვისი ამ წლის დასაწყისში ჩაეშვა და ამ დროისთის 400,000 - ამდე პლუს
         ქულა გვაქვს გაცვლილი.
         <br />
         <br />
