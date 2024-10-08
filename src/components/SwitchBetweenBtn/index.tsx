@@ -15,7 +15,7 @@ const SwitchBetweenBtn = ({
   };
 
   return (
-    <div className="flex items-center mb-4 justify-between w-full">
+    <div className="flex items-center justify-between w-full">
       <button
         type="button"
         className={`w-[49%] p-2 rounded-lg ${getBtnColor(
