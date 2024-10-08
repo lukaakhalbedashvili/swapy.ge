@@ -1,8 +1,5 @@
 "use client";
-import Buy from "@/components/Buy";
 import DirectTransfer from "@/components/DirectTransfer";
-import Sell from "@/components/Sell";
-import SwitchBetweenBtn from "@/components/SwitchBetweenBtn";
 import React, { useState } from "react";
 
 export enum TransactionType {
