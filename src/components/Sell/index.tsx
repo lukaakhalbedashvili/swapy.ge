@@ -5,7 +5,7 @@ import Calculator from "../Calculator";
 import Dialog from "../Modal";
 import { Slider } from "../Slider";
 
-const DirectTransfer = () => {
+const Sell = () => {
   const [isAlert, setIsAlert] = useState<boolean>();
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
 
@@ -69,4 +69,4 @@ const DirectTransfer = () => {
   );
 };
 
-export default DirectTransfer;
+export default Sell;

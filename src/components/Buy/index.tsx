@@ -7,7 +7,10 @@ import { getPaymentLinkAction } from "@/server-actions";
 import { PaymentMethods } from "@/server-actions/server_actions_types";
 
 const Buy = () => {
-  const plusPointRate = 350;
+  const myRate = 1.6;
+  const bogRate = 400;
+  const minBuyTransaction = 4000;
+  const maxBuyTransaction = 40000;
 
   const router = useRouter();
 
@@ -15,7 +18,12 @@ const Buy = () => {
     plusPointsBuy: Yup.number()
       .typeError("")
       .required("სავალდებულოა")
-      .min(plusPointRate, `მინიმალური რაოდენობა ${plusPointRate} ქულაა`),
+      // .min(plusPointRate, `მინიმალური რაოდენობა ${plusPointRate} ქულაა`),
+      .min(minBuyTransaction, `მინიმალური რაოდენობა ${minBuyTransaction} ქულაა`)
+      .max(
+        maxBuyTransaction,
+        `ერთჯერადი ტრანზაქციის მაქსიმალური რაოდენობა ${maxBuyTransaction} ქულაა`
+      ),
 
     requiredLariAmount: Yup.number()
       .typeError("")
@@ -55,6 +63,10 @@ const Buy = () => {
 
   return (
     <form onSubmit={handleSubmit} className="mt-6">
+      <div className="flex flex-col w-full items-center justify-center">
+        <p className="text-sm">ხელმისაწვდომი პლუს ქულების რაოდენობა</p>
+        <h3 className="text-2xl mt-5">370,051</h3>
+      </div>
       <Input
         placeholder="შესაძენი პლუს ქულების რაოდენობა"
         type="number"
@@ -62,7 +74,8 @@ const Buy = () => {
         name="plusPointsBuy"
         onBlurHandler={handleBlur}
         onChange={(e) => {
-          const requiredLariAmount = Number(e.target.value) / plusPointRate;
+          const requiredLariAmount =
+            (Number(e.target.value) / bogRate) * myRate;
           setFieldValue("requiredLariAmount", requiredLariAmount.toFixed(2));
           return handleChange(e);
         }}
@@ -84,22 +97,25 @@ const Buy = () => {
           return handleBlur(e);
         }}
         onChange={(e) => {
-          const plusPointsBuy = Number(e.target.value) * plusPointRate;
+          const plusPointsBuy = Number(e.target.value) * myRate;
           setFieldValue("plusPointsBuy", Math.round(plusPointsBuy));
           return handleChange(e);
         }}
         errorMessage={touched.requiredLariAmount && errors.requiredLariAmount}
       />
 
-      <p className="text-smallSecondaryTxt">
-        {plusPointRate} Plus ქულა = 1.00 ₾
-      </p>
-
-      {values.plusPointsBuy && (
-        <p className=" mt-4 text-white">
-          ანგარიშზე დაგერიცხებათ {values.plusPointsBuy} PLUS ქულა
+      <div className="flex flex-col items-center w-full justify-center">
+        <p className="text-smallSecondaryTxt">
+          {bogRate} Plus ქულა = {myRate.toFixed(2)} ₾
         </p>
-      )}
+        {/* <p className="text-smallSecondaryTxt">{bogRate} Plus ქულა = 1.00 ₾</p> */}
+
+        {values.plusPointsBuy && (
+          <p className=" mt-4 text-white">
+            ანგარიშზე დაგერიცხებათ {values.plusPointsBuy} PLUS ქულა
+          </p>
+        )}
+      </div>
 
       <div>
         <button className={`p-6 bg-main w-full rounded-lg mt-10`} type="submit">
