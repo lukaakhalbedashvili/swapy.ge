@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import { useRouter } from "next/navigation";
 import { getPaymentLinkAction } from "@/server-actions";
 import { PaymentMethods } from "@/server-actions/server_actions_types";
+import CountUp from "react-countup";
 
 const Buy = () => {
   const myRate = 1.6;
@@ -18,17 +19,17 @@ const Buy = () => {
     plusPointsBuy: Yup.number()
       .typeError("")
       .required("სავალდებულოა")
-      // .min(plusPointRate, `მინიმალური რაოდენობა ${plusPointRate} ქულაა`),
       .min(minBuyTransaction, `მინიმალური რაოდენობა ${minBuyTransaction} ქულაა`)
       .max(
         maxBuyTransaction,
-        `ერთჯერადი ტრანზაქციის მაქსიმალური რაოდენობა ${maxBuyTransaction} ქულაა`
+        `ტრანზაქციის მაქსიმალური რაოდენობა ${maxBuyTransaction} ქულაა`
       ),
 
     requiredLariAmount: Yup.number()
       .typeError("")
       .required("სავალდებულოა")
-      .min(1, "მინიმალური რაოდენობა 1 ლარია"),
+      .min(16, "მინიმალური რაოდენობა 16 ლარია")
+      .max(160, "მინიმალური რაოდენობა 160 ლარია"),
   });
 
   const formik = useFormik({
@@ -62,11 +63,18 @@ const Buy = () => {
   }, [values, validateForm]);
 
   return (
-    <form onSubmit={handleSubmit} className="mt-6">
+    <form
+      onSubmit={handleSubmit}
+      className="mt-6 flex flex-col justify-between"
+    >
       <div className="flex flex-col w-full items-center justify-center">
-        <p className="text-sm">ხელმისაწვდომი პლუს ქულების რაოდენობა</p>
-        <h3 className="text-2xl mt-5">370,051</h3>
+        <p className="text-sm my-5">ხელმისაწვდომი პლუს ქულების რაოდენობა</p>
+
+        <h3 className="text-2xl ">
+          <CountUp end={370051} />
+        </h3>
       </div>
+
       <Input
         placeholder="შესაძენი პლუს ქულების რაოდენობა"
         type="number"
@@ -97,7 +105,8 @@ const Buy = () => {
           return handleBlur(e);
         }}
         onChange={(e) => {
-          const plusPointsBuy = Number(e.target.value) * myRate;
+          const plusPointsBuy = Number(e.target.value) * (1 / myRate) * bogRate;
+
           setFieldValue("plusPointsBuy", Math.round(plusPointsBuy));
           return handleChange(e);
         }}
@@ -117,13 +126,11 @@ const Buy = () => {
         )}
       </div>
 
-      <div>
-        <button className={`p-6 bg-main w-full rounded-lg mt-10`} type="submit">
-          {`გადახდა ( ${
-            values.requiredLariAmount ? values.requiredLariAmount : 0
-          } ₾ )`}
-        </button>
-      </div>
+      <button className={`p-6 bg-main w-full rounded-lg mt-10`} type="submit">
+        {`გადახდა ( ${
+          values.requiredLariAmount ? values.requiredLariAmount : 0
+        } ₾ )`}
+      </button>
     </form>
   );
 };
