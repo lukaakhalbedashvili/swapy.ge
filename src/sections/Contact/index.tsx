@@ -7,9 +7,9 @@ const Contact = () => {
       className="pt-[10%] w-full  flex items-center flex-col px-2 pb-20 lg:pt-10"
       id="კონტაქტი"
     >
-      <h1 className="w-full text-center flex justify-center  mb-10 ">
+      <h2 className="w-full text-center flex justify-center  mb-10 ">
         კონტაქტი
-      </h1>
+      </h2>
 
       <div className="bg-body rounded-lg p-2 text-center flex flex-col w-full py-5 text-gray-400">
         <Link

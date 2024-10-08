@@ -14,10 +14,10 @@ const page = async ({ params }: SuccessPropsI) => {
         <Image src="/checked.svg" width={50} height={50} alt="success" />
       </div>
 
-      <h1 className="text-success mt-5 text-lg text-center">
+      <h2 className="text-success mt-5 text-lg text-center">
         გადახდილია, {Number(transaction?.lariAmountTheyReceive).toFixed(2)} ₾
         ანგარიშზე 10 წუთის განმავლობაში დაგერიცხებათ
-      </h1>
+      </h2>
 
       <p className="text-main text-3xl mt-8 font-bold">
         {String(transaction?.paidPlusPoints)} ქულა
