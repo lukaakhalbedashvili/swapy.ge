@@ -2,13 +2,16 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 
+import { GoogleAnalytics } from "@next/third-parties/google";
+
 import localFont from "next/font/local";
 
-// Font files can be colocated inside of `pages`
 const myFont = localFont({ src: "../../public/mark-geo.woff2" });
 
+import { Analytics } from "@vercel/analytics/react";
+
 export const metadata: Metadata = {
-  title: "swapy / სვაპი | გადაცვალე PLUS ქულები ლარში",
+  title: "გადაცვალე PLUS ქულები ლარში",
   description: "გაცვალე პლუს ქულები ლარში",
 };
 
@@ -19,7 +22,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={myFont.className}>{children}</body>
+      <body className={myFont.className}>
+        {children}
+        <Analytics />
+
+        <GoogleAnalytics gaId="G-WWWW1XHYKH" />
+      </body>
     </html>
   );
 }

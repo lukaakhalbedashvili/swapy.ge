@@ -8,9 +8,9 @@ const AreWeScammers = () => {
       className="pt-[10%] lg:pt-[4%] w-full  flex items-center flex-col px-2 pb-20 lg:w-1/2 lg:text-center"
       id="სკამერები ვართ?"
     >
-      <h1 className="w-full text-center flex justify-center  mb-10 ">
+      <h2 className="w-full text-center flex justify-center  mb-10 ">
         სკამერები ვართ?
-      </h1>
+      </h2>
 
       <div className="bg-body rounded-lg p-2 lg:p-10 text-gray-400 text-center">
         swapy / სვაპი{" "}
@@ -55,7 +55,7 @@ const AreWeScammers = () => {
         <br />
         <br />
         თუ კვლავ გაქვთ შეკითხვები ჩვენი ავთენტურობის შესახებ , მოგვწერეთ ან
-        დაგვირეკეთ.
+        დაგვირეკეთ - 595 20 62 09
       </div>
     </section>
   );
