@@ -20,7 +20,7 @@ const Team = () => {
         >
           <div className="relative w-52 h-52">
             <Image
-              src="/Luka.jpg"
+              src="/handsome.jpg"
               fill
               objectFit="cover"
               alt="ლუკა ახალბედასჰვილი"
