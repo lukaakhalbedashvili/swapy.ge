@@ -20,10 +20,10 @@ const Transactions = () => {
       </h1>
 
       <div className="bg-body rounded-lg p-2 lg:p-5 relative lg:pb-10">
-        <SwitchBetweenBtn
+        {/* <SwitchBetweenBtn
           onClickHandler={(type) => setSelectedTransactionType(type)}
           selectedTransactionType={selectedTransactionType}
-        />
+        /> */}
 
         {selectedTransactionType === TransactionType.BUY ? <Buy /> : <Sell />}
       </div>
