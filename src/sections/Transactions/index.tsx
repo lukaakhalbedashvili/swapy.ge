@@ -16,7 +16,7 @@ const Transactions = () => {
   return (
     <section className="pt-[20%] w-full px-2 lg:pt-[4%]  lg:w-1/2" id="გაცვალე">
       <h1 className="w-full text-center flex justify-center  mb-10">
-        პლუს ქულების გაყიდვა / ყიდვა
+        პლუს ქულების გაყიდვა
       </h1>
 
       <div className="bg-body rounded-lg p-2 lg:p-5 relative lg:pb-10">
