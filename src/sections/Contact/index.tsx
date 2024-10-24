@@ -20,8 +20,8 @@ const Contact = () => {
           facebook
         </Link>
 
-        <Link href="tel:+995 595 20 62 09" className="p-4">
-          +995 595 20 62 09
+        <Link href="tel:+995 598 58 70 01" className="p-4">
+          +995 598 58 70 01
         </Link>
 
         <Link
