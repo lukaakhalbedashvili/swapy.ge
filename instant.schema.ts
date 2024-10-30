@@ -7,45 +7,40 @@ const graph = i.graph(
   {
     $users: i.entity({
       email: i.any().unique().indexed(),
-      // email: i.string().unique(),
     }),
     profiles: i.entity({
-      nickname: i.string(),
+      name: i.string(),
       userId: i.string().unique(),
     }),
-    roles: i.entity({
-      type: i.string().unique(),
+    messages: i.entity({
+      content: i.string(),
+      owner: i.string(),
     }),
-    todos: i.entity({
-      text: i.string(),
-      userId: i.string(),
-      completed: i.boolean(),
-    }),
+    chats: i.entity({ label: i.string() }),
   },
   {
-    // `$users` is in the reverse direction for all these links!
-    todoOwner: {
+    chat: {
       reverse: {
-        on: "$users",
+        on: "chats",
         has: "many",
-        label: "todos",
+        label: "messages",
       },
       forward: {
-        on: "todos",
+        on: "messages",
         has: "one",
-        label: "owner",
+        label: "chat",
       },
     },
-    userRoles: {
+    chatOwners: {
       reverse: {
-        on: "$users",
-        has: "one",
-        label: "role",
+        on: "profiles",
+        has: "many",
+        label: "chats",
       },
       forward: {
-        on: "roles",
+        on: "chats",
         has: "many",
-        label: "users",
+        label: "profiles",
       },
     },
     userProfiles: {
