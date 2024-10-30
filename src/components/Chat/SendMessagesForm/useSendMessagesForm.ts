@@ -1,18 +1,10 @@
-import { init, tx, id, lookup, i } from "@instantdb/react";
+import { init, tx, id } from "@instantdb/react";
 
 const APP_ID = "4dcd7bfc-7eb7-41e6-9641-d66c66132fc2";
 
-interface SignInResponseI {
-  app_id: string;
-  created_at: string;
-  email: string;
-  id: string;
-  refresh_token: string;
-}
-
 const db = init({ appId: APP_ID });
 
-const useChat = () => {
+const useSendMessagesForm = () => {
   const { user } = db.useAuth();
 
   const { data } = db.useQuery({
@@ -20,6 +12,21 @@ const useChat = () => {
       profile: { $: { where: { userId: user?.id } }, chats: { messages: {} } },
     },
   });
+
+  const addMessage = async (text: string) => {
+    const chatId = data?.$users[0].profile[0].chats[0].id;
+    const ownerId = data?.$users[0].profile[0].id;
+
+    try {
+      await db.transact([
+        tx.messages[id()].update({ content: text, owner: ownerId }).link({
+          chat: chatId,
+        }),
+      ]);
+    } catch (err) {
+      console.log(err, "err");
+    }
+  };
 
   const createChat = async () => {
     const profileId = data?.$users[0].profile[0].id!;
@@ -35,9 +42,10 @@ const useChat = () => {
 
   return {
     user,
+    addMessage,
     createChat,
     data,
   };
 };
 
-export default useChat;
+export default useSendMessagesForm;
