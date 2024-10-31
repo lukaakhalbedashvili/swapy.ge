@@ -8,51 +8,57 @@ const graph = i.graph(
     $users: i.entity({
       email: i.any().unique().indexed(),
     }),
-    profiles: i.entity({
-      name: i.string(),
-      userId: i.string().unique(),
+    chats: i.entity({
+      created: i.any(),
+      label: i.any(),
     }),
     messages: i.entity({
-      content: i.string(),
-      owner: i.string(),
+      content: i.any(),
+      created: i.any(),
+      owner: i.any(),
     }),
-    chats: i.entity({ label: i.string() }),
+    profiles: i.entity({
+      email: i.any().unique().indexed(),
+      name: i.any(),
+      nickname: i.any(),
+      userId: i.any().unique(),
+    }),
   },
   {
-    chat: {
-      reverse: {
-        on: "chats",
-        has: "many",
-        label: "messages",
-      },
-      forward: {
-        on: "messages",
-        has: "one",
-        label: "chat",
-      },
-    },
-    chatOwners: {
-      reverse: {
-        on: "profiles",
-        has: "many",
-        label: "chats",
-      },
+    chatsProfiles: {
       forward: {
         on: "chats",
         has: "many",
         label: "profiles",
       },
-    },
-    userProfiles: {
       reverse: {
-        on: "$users",
-        has: "one",
-        label: "profile",
+        on: "profiles",
+        has: "many",
+        label: "chats",
       },
+    },
+    messagesChat: {
+      forward: {
+        on: "messages",
+        has: "one",
+        label: "chat",
+      },
+      reverse: {
+        on: "chats",
+        has: "many",
+        label: "messages",
+      },
+    },
+    profilesUser: {
       forward: {
         on: "profiles",
         has: "one",
         label: "user",
+      },
+      reverse: {
+        on: "$users",
+        has: "one",
+        label: "profile",
       },
     },
   }

@@ -7,8 +7,6 @@ import Footer from "@/sections/Footer";
 import Header from "@/sections/Header";
 import Team from "@/sections/Team";
 import Transactions from "@/sections/Transactions";
-import Image from "next/image";
-import Link from "next/link";
 
 export default function Home() {
   return (

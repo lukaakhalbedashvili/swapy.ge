@@ -40,13 +40,13 @@ export const Slider = () => {
           />
 
           <div className="absolute bottom-0 p-4 bg-body text-white py-20 w-full lg:flex lg:justify-center">
-            <ol className="list-decimal pl-5 lg:w-fit">
+            <ul className="list-none pl-5 lg:w-fit">
               <li className="mb-10">
                 გახსენით საქართველოს ბანკის მობაილ ბანკის აპლიკაცია
               </li>
 
               <li>დააჭირეთ ისრით მონიშნულ წარწერას PLUS</li>
-            </ol>
+            </ul>
           </div>
         </SwiperSlide>
 
@@ -59,9 +59,9 @@ export const Slider = () => {
           />
 
           <div className="absolute bottom-0 p-4 bg-body text-white py-20 w-full lg:flex lg:justify-center">
-            <ol className="list-decimal pl-5 lg:w-fit">
+            <ul className="list-none pl-5 lg:w-fit">
               <li>დააჭირეთ ისრით მონიშნულ სექციას</li>
-            </ol>
+            </ul>
           </div>
         </SwiperSlide>
 
@@ -74,9 +74,9 @@ export const Slider = () => {
           />
 
           <div className="absolute bottom-0 p-4 bg-body text-white py-20 w-full lg:flex lg:justify-center">
-            <ol className="list-decimal pl-5 lg:w-fit">
+            <ul className="list-none pl-5 lg:w-fit">
               <li>დააჭირეთ ისრით მონიშნულ გადარიცხვის ღილაკს</li>
-            </ol>
+            </ul>
           </div>
         </SwiperSlide>
 
@@ -89,7 +89,7 @@ export const Slider = () => {
           />
 
           <div className="absolute bottom-0 p-4 bg-body text-white w-full lg:flex lg:justify-center">
-            <ol className="list-decimal pl-5 lg:w-fit">
+            <ul className="list-none pl-5 lg:w-fit">
               <li className="mb-10 mt-10">
                 პირველ ველში წერთ მიმღებ პირად ნომერს
                 <a className="text-main"> 08101039664</a>
@@ -108,13 +108,13 @@ export const Slider = () => {
                 დაგერიცხოთ. TBC ბანკის ანგარიშის მითითების შემთხვევაში თანხა
                 შემდეგ დღეს აგესახებათ.
               </li>
-            </ol>
+            </ul>
           </div>
         </SwiperSlide>
 
-        <div className="swiper-button-next text-white  p-1 rounded-full  text-xs"></div>
+        <div className="swiper-button-next text-white p-1 rounded-full text-xs"></div>
 
-        <div className="swiper-button-prev text-white  p-1 rounded-full  text-xs"></div>
+        <div className="swiper-button-prev text-white p-1 rounded-full text-xs"></div>
       </Swiper>
     </>
   );

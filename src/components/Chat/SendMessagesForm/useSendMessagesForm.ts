@@ -1,8 +1,6 @@
-import { init, tx, id } from "@instantdb/react";
-
-const APP_ID = "4dcd7bfc-7eb7-41e6-9641-d66c66132fc2";
-
-const db = init({ appId: APP_ID });
+import { getCurrentTimeInReadableFormat } from "@/utils/getCurrentTimeInReadableFormat";
+import { db } from "@/utils/instantdb";
+import { tx, id } from "@instantdb/react";
 
 const useSendMessagesForm = () => {
   const { user } = db.useAuth();
@@ -19,9 +17,15 @@ const useSendMessagesForm = () => {
 
     try {
       await db.transact([
-        tx.messages[id()].update({ content: text, owner: ownerId }).link({
-          chat: chatId,
-        }),
+        tx.messages[id()]
+          .update({
+            content: text,
+            owner: ownerId,
+            created: getCurrentTimeInReadableFormat(),
+          })
+          .link({
+            chat: chatId,
+          }),
       ]);
     } catch (err) {
       console.log(err, "err");
@@ -32,9 +36,14 @@ const useSendMessagesForm = () => {
     const profileId = data?.$users[0].profile[0].id!;
 
     const response = await db.transact([
-      tx.chats[id()].update({ label: user?.email }).link({
-        profiles: [profileId, "9cd14f8d-fada-409f-b6b1-1867ceef135d"],
-      }),
+      tx.chats[id()]
+        .update({
+          label: user?.email,
+          created: getCurrentTimeInReadableFormat(),
+        })
+        .link({
+          profiles: [profileId, "9cd14f8d-fada-409f-b6b1-1867ceef135d"],
+        }),
     ]);
 
     console.log(response, "response");

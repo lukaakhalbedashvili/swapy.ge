@@ -7,7 +7,8 @@ interface SendMessagesFormPropsI {
 }
 
 const SendMessagesForm = ({ setIsChatOpen }: SendMessagesFormPropsI) => {
-  const { data, addMessage, user } = useSendMessagesForm();
+  const { data, addMessage } = useSendMessagesForm();
+
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
