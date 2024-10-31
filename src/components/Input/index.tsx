@@ -1,6 +1,6 @@
 import React, { HTMLAttributes, HTMLInputTypeAttribute } from "react";
 
-interface InputI {
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   placeholder: string;
   type: HTMLInputTypeAttribute;
   value?: string;
@@ -11,6 +11,7 @@ interface InputI {
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
   permanentText?: string;
   inputMode?: "numeric" | "text";
+  errorMessageClassName?: string;
 }
 
 const Input = ({
@@ -24,7 +25,9 @@ const Input = ({
   value,
   permanentText,
   inputMode,
-}: InputI) => {
+  errorMessageClassName = "text-error mt-1 absolute",
+  ...props
+}: InputProps) => {
   return (
     <div className="relative my-8">
       <input
@@ -37,14 +40,13 @@ const Input = ({
         onChange={onChange}
         onFocus={onFocus}
         className="bg-transparent h-12 outline-0 border-b w-full pl-2 focus:border-main pr-6"
+        {...props}
       />
       <span className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500">
         {permanentText}
       </span>
 
-      {errorMessage && (
-        <p className="text-error mt-1 absolute">{errorMessage}</p>
-      )}
+      {errorMessage && <p className={errorMessageClassName}>{errorMessage}</p>}
     </div>
   );
 };
