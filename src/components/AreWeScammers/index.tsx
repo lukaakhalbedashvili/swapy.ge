@@ -24,14 +24,6 @@ const AreWeScammers = () => {
         სხვა დეტალის შესახებ:
         <br />
         <br />
-        {/* <a
-          href="https://www.my.gov.ge/ka-ge/services/6/service/179"
-          className="text-main"
-          target="_blank"
-        >
-          https://shorturl.at/1toyH
-        </a> */}
-        {/* <br /> */}
         <a
           href="https://bs.napr.gov.ge/GetBlob?pid=400&bid=boVlyOwlsX3qmYsntmLmFKnbwz02C0qvu28pYeGe9BL[q50yuVTK0RLtKgztILrj"
           className="text-main"

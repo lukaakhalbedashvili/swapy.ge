@@ -4,14 +4,6 @@ import React, { useRef, useState } from "react";
 
 const APP_ID = "4dcd7bfc-7eb7-41e6-9641-d66c66132fc2";
 
-interface SignInResponseI {
-  app_id: string;
-  created_at: string;
-  email: string;
-  id: string;
-  refresh_token: string;
-}
-
 const db = init({ appId: APP_ID });
 
 const Dashboard = () => {
@@ -41,7 +33,6 @@ const Dashboard = () => {
   };
 
   const inputRef = useRef<HTMLInputElement>(null);
-  console.log(data?.chats[0].messages);
 
   return (
     <div className="flex flex-col text-black">
