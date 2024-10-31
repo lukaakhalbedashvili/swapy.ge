@@ -1,6 +1,4 @@
 import React, { Dispatch, SetStateAction } from "react";
-import * as Yup from "yup";
-import { useFormik } from "formik";
 import useCreateChatForm from "./useCreateChatForm";
 import Image from "next/image";
 import Input from "@/components/Input";
@@ -11,46 +9,17 @@ interface CreateChatFormPropsI {
 
 const CreateChatForm = ({ setIsChatOpen }: CreateChatFormPropsI) => {
   const {
-    createProfile,
     sendMagicCode,
-    signInWithMagicCode,
-    user,
-    addMessage,
-    createChat,
-    data,
+    handleSubmit,
+    values,
+    handleBlur,
+    touched,
+    handleChange,
+    errors,
+    isCodeSent,
+    setIsCodeSent,
   } = useCreateChatForm();
 
-  const validationSchema = Yup.object().shape({
-    email: Yup.string(),
-    name: Yup.string().required("სავალდებულოა"),
-    magicCode: Yup.string().required("სავალდებულოა"),
-  });
-
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-      name: "",
-      magicCode: "",
-    },
-    validationSchema,
-    onSubmit: async () => {
-      console.log(values);
-
-      const { email, id } = await signInWithMagicCode({
-        code: values.magicCode,
-        sentEmail: values.email,
-      });
-
-      createProfile({ email, name: values.name, userId: id });
-    },
-  });
-
-  const { values, handleBlur, handleChange, touched, errors } = formik;
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    formik.handleSubmit();
-  };
   return (
     <form
       className="fixed lg:right-10 lg:bottom-36 w-fit right-5 bottom-28 flex-col justify-center items-center p-10 rounded-lg bg-white"
@@ -97,11 +66,12 @@ const CreateChatForm = ({ setIsChatOpen }: CreateChatFormPropsI) => {
 
             const { sent } = await sendMagicCode(values.email);
 
-            console.log(sent);
+            setIsCodeSent(sent);
           }}
           className="absolute right-0 -bottom-10 bg-secondary rounded-lg p-2 text-xs"
+          disabled={isCodeSent}
         >
-          კოდის მიღება
+          {!isCodeSent ? "კოდის მიღება" : "გაგზავნილია"}
         </button>
       </div>
 
@@ -143,7 +113,10 @@ const CreateChatForm = ({ setIsChatOpen }: CreateChatFormPropsI) => {
 
         <div className="flex flex-col justify-between items-start h-full ml-5">
           <p className="text-xs">დაგვირეკეთ</p>
-          <p className="text-sm">598 58 70 01</p>
+
+          <a className="text-sm" href="tel:598 58 70 01">
+            598 58 70 01
+          </a>
         </div>
       </div>
     </form>

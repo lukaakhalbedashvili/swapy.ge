@@ -1,18 +1,13 @@
-import { init, tx, id, lookup, i } from "@instantdb/react";
-
-const APP_ID = "4dcd7bfc-7eb7-41e6-9641-d66c66132fc2";
-
-interface SignInResponseI {
-  app_id: string;
-  created_at: string;
-  email: string;
-  id: string;
-  refresh_token: string;
-}
-
-const db = init({ appId: APP_ID });
+import { db } from "@/utils/instantdb";
+import { tx, id, lookup } from "@instantdb/react";
+import * as Yup from "yup";
+import { useFormik } from "formik";
+import { SignInResponseI } from "@/app.interface";
+import { useState } from "react";
 
 const useCreateChatForm = () => {
+  const [isCodeSent, setIsCodeSent] = useState(false);
+
   const { user } = db.useAuth();
 
   const { data } = db.useQuery({
@@ -20,8 +15,6 @@ const useCreateChatForm = () => {
       profile: { $: { where: { userId: user?.id } }, chats: { messages: {} } },
     },
   });
-
-  console.log(data, "?.profiles");
 
   const sendMagicCode = async (email: string): Promise<{ sent: boolean }> => {
     const response: { sent: boolean } = await db.auth
@@ -49,31 +42,6 @@ const useCreateChatForm = () => {
     return response.user;
   };
 
-  const addMessage = async (text: string) => {
-    const chatId = data?.$users[0].profile[0].chats[0].id;
-    const ownerId = data?.$users[0].profile[0].id;
-
-    try {
-      await db.transact([
-        tx.messages[id()].update({ content: text, owner: ownerId }).link({
-          chat: chatId,
-        }),
-      ]);
-    } catch (err) {
-      console.log(err, "err");
-    }
-  };
-
-  const createChat = async () => {
-    const profileId = data?.$users[0].profile[0].id!;
-
-    const response = await db.transact([
-      tx.chats[id()].update({ label: user?.email }).link({
-        profiles: [profileId, "9cd14f8d-fada-409f-b6b1-1867ceef135d"],
-      }),
-    ]);
-  };
-
   const createProfile = async ({
     userId,
     email,
@@ -96,14 +64,64 @@ const useCreateChatForm = () => {
     console.log(response, "response");
   };
 
+  const createChat = async () => {
+    const profileId = data?.$users[0].profile[0].id!;
+
+    const response = await db.transact([
+      tx.chats[id()].update({ label: user?.email }).link({
+        profiles: [profileId, "9cd14f8d-fada-409f-b6b1-1867ceef135d"],
+      }),
+    ]);
+
+    console.log(response, "response");
+  };
+
+  const validationSchema = Yup.object().shape({
+    email: Yup.string(),
+    name: Yup.string().required("სავალდებულოა"),
+    magicCode: Yup.string().required("სავალდებულოა"),
+  });
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      name: "",
+      magicCode: "",
+    },
+    validationSchema,
+    onSubmit: async () => {
+      console.log(values);
+
+      const { email, id } = await signInWithMagicCode({
+        code: values.magicCode,
+        sentEmail: values.email,
+      });
+
+      createProfile({ email, name: values.name, userId: id });
+
+      if (user && !data?.$users[0]?.profile[0]?.chats?.length) {
+        createChat();
+      }
+    },
+  });
+
+  const { values, handleBlur, handleChange, touched, errors } = formik;
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    formik.handleSubmit();
+  };
+
   return {
-    user,
     sendMagicCode,
-    signInWithMagicCode,
-    createProfile,
-    addMessage,
-    createChat,
-    data,
+    handleSubmit,
+    values,
+    handleBlur,
+    touched,
+    handleChange,
+    errors,
+    isCodeSent,
+    setIsCodeSent,
   };
 };
 
