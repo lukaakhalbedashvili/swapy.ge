@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction, useRef, useEffect } from "react";
 import useSendMessagesForm from "./useSendMessagesForm";
 import Image from "next/image";
-import { sendMessage } from "@/utils/sendMessage";
+import { sendMessage } from "@/server-actions";
 
 interface SendMessagesFormPropsI {
   setIsChatOpen: Dispatch<SetStateAction<boolean>>;
@@ -22,10 +22,10 @@ const SendMessagesForm = ({ setIsChatOpen }: SendMessagesFormPropsI) => {
       className="w-[90%] lg:w-96 lg:h-[60vh]  fixed lg:right-10 lg:bottom-36 right-5 bottom-28 flex-col justify-between items-center p-5 rounded-lg bg-white text-black h-[70vh]"
       onSubmit={async (e) => {
         e.preventDefault();
-        if (inputRef?.current?.value)
+        if (inputRef?.current?.value) {
           await addMessage(inputRef?.current?.value);
-
-        await sendMessage();
+          await sendMessage(inputRef?.current?.value);
+        }
 
         if (inputRef.current) {
           inputRef.current.value = "";
