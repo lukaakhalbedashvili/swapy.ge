@@ -51,7 +51,8 @@ export const generateMetadata = ({
 }: {
   params: { dynamicPage: string };
 }): Metadata => {
-  const page = pages.find((p) => p.slug === params.dynamicPage);
+  const decodedSlug = decodeURIComponent(params.dynamicPage);
+  const page = pages.find((p) => p.slug === decodedSlug);
   return {
     title: page?.title,
     description: page?.description,
