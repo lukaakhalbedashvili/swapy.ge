@@ -20,9 +20,9 @@ const Team = () => {
         >
           <div className="relative w-52 h-52">
             <Image
-              src="/handsome.jpg"
+              src="/akhalbeda.png"
               fill
-              objectFit="cover"
+              className="object-cover"
               alt="ლუკა ახალბედასჰვილი"
             />
           </div>
@@ -39,7 +39,7 @@ const Team = () => {
             <Image
               src="/Lasha.jpeg"
               fill
-              objectFit="cover"
+              className="object-cover"
               alt="ლუკა ახალბედასჰვილი"
             />
           </div>

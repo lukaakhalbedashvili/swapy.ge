@@ -3,8 +3,8 @@ import Input from "../Input";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useRouter } from "next/navigation";
-import { getPaymentLinkAction } from "@/server-actions";
-import { PaymentMethods } from "@/server-actions/server_actions_types";
+// import { getPaymentLinkAction } from "@/server-actions";
+// import { PaymentMethods } from "@/server-actions/server_actions_types";
 import CountUp from "react-countup";
 
 const Buy = () => {
