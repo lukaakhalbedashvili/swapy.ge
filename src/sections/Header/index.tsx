@@ -12,15 +12,15 @@ const Header = () => (
           </Link>
         </li>
 
-        <li className="ml-4 lg:ml-10  hidden lg:inline">
-          <Link href="#გაცვალე">გაცვალე</Link>
+        <li className="ml-4 lg:ml-10 lg:inline">
+          <Link href="#გაცვალე">ქულების გადაცვლა</Link>
         </li>
 
         <li className="ml-4 lg:ml-10 text-nowrap hidden lg:inline">
           <Link href="#ჩვენს შესახებ">ჩვენს შესახებ</Link>
         </li>
 
-        <li className="ml-4 lg:ml-10">
+        <li className="ml-4 lg:ml-10 hidden lg:inline">
           <a href="#კონტაქტი">კონტაქტი</a>
         </li>
 

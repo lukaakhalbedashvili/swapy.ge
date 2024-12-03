@@ -30,7 +30,7 @@ const Sell = () => {
 
   return (
     <form onSubmit={handleSubmit} className="mt-6" autoComplete="off">
-      <p className="text-main">კალკულატორი</p>
+      <h3 className="text-main">კალკულატორი</h3>
 
       <Input
         placeholder="გასაყიდი პლუს ქულების რაოდენობა"
@@ -71,7 +71,7 @@ const Sell = () => {
       <p className="text-smallSecondaryTxt">400 Plus ქულა = 1.10 ₾</p>
 
       <p
-        className={`mb-4 mt-7  text-white lg:mb-0 ${
+        className={`mb-10 mt-7  text-white lg:mb-0 ${
           values.receivedMoney ? "visible" : "invisible"
         }`}
       >

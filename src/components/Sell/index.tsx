@@ -12,7 +12,7 @@ const Sell = () => {
   return (
     <div className="text-center px-2 text  font-bold mt-10 ">
       <h2 className="leading-7 lg:leading-9">
-        გადმორიცხე ნებისმიერი რაოდენობის PLUS ქულა პირად ნომერზე :{" "}
+        გადმორიცხე ნებისმიერი რაოდენობის <b>PLUS ქულა</b> პირად ნომერზე :{" "}
       </h2>
 
       {isAlert && <Alert text="დაკოპირდა" onClose={() => setIsAlert(false)} />}
@@ -39,10 +39,10 @@ const Sell = () => {
         />
       </div>
 
-      <p className="leading-7 lg:leading-9">
+      <h2 className="leading-7 lg:leading-9">
         და მიიღე ღირებულების <a className="text-main">110%</a> ხუთი წუთის
         განმავლობაში
-      </p>
+      </h2>
 
       <div className="mt-10">
         <Calculator />
@@ -53,6 +53,7 @@ const Sell = () => {
         onClick={() => setIsDialogOpen(true)}
       >
         <p>ინსტრუქცია</p>
+
         <Image
           src={"info-icon.svg"}
           alt="copy"

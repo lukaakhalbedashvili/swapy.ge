@@ -23,11 +23,11 @@ const Team = () => {
               src="/akhalbeda.png"
               fill
               className="object-cover"
-              alt="ლუკა ახალბედასჰვილი"
+              alt="ლუკა ახალბედაშვილი"
             />
           </div>
 
-          <h2 className="text-white mt-4 text-center">ლუკა ახალბედაშვილი</h2>
+          <h3 className="text-white mt-4 text-center">ლუკა ახალბედაშვილი</h3>
         </Link>
 
         <Link
@@ -40,11 +40,11 @@ const Team = () => {
               src="/Lasha.jpeg"
               fill
               className="object-cover"
-              alt="ლუკა ახალბედასჰვილი"
+              alt="ლაშა მარხვაიძე"
             />
           </div>
 
-          <h2 className="text-white mt-4 text-center">ლაშა მარხვაიძე</h2>
+          <h3 className="text-white mt-4 text-center">ლაშა მარხვაიძე</h3>
         </Link>
       </div>
     </section>

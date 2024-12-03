@@ -12,7 +12,31 @@ import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "გადაცვალე PLUS ქულები ლარში",
-  description: "გაცვალე პლუს ქულები ლარში",
+  description: "გადაცვალე პლუს ქულები ლარში",
+  keywords: [
+    "plus qulebis gadacvla",
+    "plus qulebis gayidva",
+    "PLUS qulebis gayidva",
+    "PLUS kulebis gayidva",
+    "PLUS kulebis gadacvla",
+    "plus qulebis yidva gayidva",
+    "plus ქულების ყიდვა გაყიდვა",
+    "პლუს ქულების გაყიდვა",
+    "პლუს ქულების გადაცვლა",
+    "ვიყიდი პლუს ქულებს",
+  ],
+  applicationName: "Swapy.ge",
+  authors: [
+    {
+      name: "Luka Akhalbedashvili",
+      url: "https://www.linkedin.com/in/luka-akhalbedashvili-02620a199/",
+    },
+    {
+      name: "Lasha Markhvaidze",
+      url: "https://www.linkedin.com/in/lasham/",
+    },
+  ],
+  category: "ფინანსები",
 };
 
 export default function RootLayout({
