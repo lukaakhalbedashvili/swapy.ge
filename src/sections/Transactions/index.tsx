@@ -9,15 +9,13 @@ export enum TransactionType {
   BUY = "buy",
 }
 
-const Transactions = () => {
+const Transactions = ({ title }: { title: string }) => {
   const [selectedTransactionType, setSelectedTransactionType] =
     useState<TransactionType>(TransactionType.SELL);
 
   return (
-    <section className="pt-[20%] w-full px-2 lg:pt-[4%]  lg:w-1/2" id="გაცვალე">
-      <h1 className="w-full text-center flex justify-center  mb-10">
-        პლუს ქულების გაყიდვა
-      </h1>
+    <section className="w-full bg-background text-white" id="გაცვალე">
+      <h1 className="w-full text-center flex justify-center  mb-10">{title}</h1>
 
       <div className="bg-body rounded-lg p-2 lg:p-5 relative lg:pb-10">
         {/* <SwitchBetweenBtn

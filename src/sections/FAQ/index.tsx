@@ -34,7 +34,7 @@ const FAQ = () => {
         ხშირად დასმული შეკითხვები
       </h2>
 
-      <div className="bg-body rounded-lg p-2 text-gray-400 lg:w-1/2">
+      <div className="bg-body rounded-lg p-2 text-gray-400">
         {faqs.map((faq, index) => (
           <CollapsibleFAQ
             key={index}

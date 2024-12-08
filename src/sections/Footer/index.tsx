@@ -3,22 +3,23 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="mb-12">
+    <footer className="pb-12 flex flex-col items-center bg-background text-white">
       <nav className="flex flex-col lg:flex-row items-center">
         <ul className="flex flex-col lg:flex-row items-center text-base">
           <li className="mb-4 lg:mb-0 lg:mr-6">
-            <Link href="#გაცვალე">პლუს ქულების გაყიდვა</Link>
+            <Link href="/plus-qulebi">პლუს ქულები</Link>
           </li>
+
           <li className="mb-4 lg:mb-0 lg:mr-6">
-            <Link href="#ჩვენს შესახებ">ჩვენს შესახებ</Link>
+            <Link href="/plus-qulebi-gadacvla">პლუს ქულები გადაცვლა</Link>
           </li>
+
           <li className="mb-4 lg:mb-0 lg:mr-6">
-            <Link href="#კონტაქტი">კონტაქტი</Link>
+            <Link href="/plus-qulebi-larshi">პლუს ქულები ლარში</Link>
           </li>
+
           <li className="mb-4 lg:mb-0 lg:mr-6">
-            <Link href="#ხშირადდასმულიშეკითხვები">
-              ხშირად დასმული შეკითხვები
-            </Link>
+            <Link href="/#კონტაქტი">კონტაქტი</Link>
           </li>
         </ul>
       </nav>

@@ -9,6 +9,9 @@ import localFont from "next/font/local";
 const myFont = localFont({ src: "../../public/mark-geo.woff2" });
 
 import { Analytics } from "@vercel/analytics/react";
+import Header from "@/sections/Header";
+import Footer from "@/sections/Footer";
+import Chat from "@/components/Chat";
 
 export const metadata: Metadata = {
   title: "გადაცვალე PLUS ქულები ლარში",
@@ -47,11 +50,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={myFont.className}>
+        <Header />
+
         {children}
 
         <Analytics />
 
         <GoogleAnalytics gaId="G-WWWW1XHYKH" />
+
+        <Footer />
+
+        <Chat />
       </body>
     </html>
   );

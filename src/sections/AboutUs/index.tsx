@@ -3,10 +3,10 @@ import React from "react";
 const AboutUs = () => {
   return (
     <section
-      className="pt-[20%] lg:pt-[10%] w-full  flex items-center flex-col px-2 pb-20 lg:w-1/2 lg:text-center"
+      className="pt-[20%] lg:pt-[10%] w-full flex items-center flex-col pb-20 lg:text-center"
       id="ჩვენს შესახებ"
     >
-      <h2 className="w-full text-center flex justify-center  mb-10 ">
+      <h2 className="w-full text-center flex justify-center mb-10">
         ჩვენს შესახებ
       </h2>
 

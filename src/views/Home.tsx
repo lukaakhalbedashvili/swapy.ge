@@ -10,10 +10,8 @@ import Transactions from "@/sections/Transactions";
 
 const Home = () => {
   return (
-    <main className="flex flex-col items-center bg-background text-white w-full">
-      <Header />
-
-      <Transactions />
+    <main className="flex flex-col items-center bg-background text-white  pt-[20%] lg:pt-[4%] lg:px-[25%] w-full">
+      <Transactions title="პლუს ქულების გაყიდვა" />
 
       <FAQ />
 
@@ -24,10 +22,6 @@ const Home = () => {
       <AreWeScammers />
 
       <Contact />
-
-      <Footer />
-
-      <Chat />
     </main>
   );
 };

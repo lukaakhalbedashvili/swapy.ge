@@ -5,7 +5,7 @@ import React from "react";
 const AreWeScammers = () => {
   return (
     <section
-      className="pt-[10%] lg:pt-[4%] w-full  flex items-center flex-col px-2 pb-20 lg:w-1/2 lg:text-center"
+      className="pt-[10%] lg:pt-[4%] w-full  flex items-center flex-col pb-20 lg:text-center"
       id="სკამერები ვართ?"
     >
       <h2 className="w-full text-center flex justify-center  mb-10 ">

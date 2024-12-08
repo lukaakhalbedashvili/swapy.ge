@@ -5,14 +5,14 @@ import React from "react";
 const Team = () => {
   return (
     <section
-      className="w-full  flex items-center flex-col px-2 pb-20"
+      className="w-full  flex items-center flex-col pb-20"
       id="გუნდის წევრები"
     >
       <h2 className="w-full text-center flex justify-center mb-10 lg:mb-0">
         გუნდის წევრები
       </h2>
 
-      <div className="lg:flex lg:items-start  justify-around lg:w-1/2 lg:mt-10">
+      <div className="lg:flex lg:items-start  justify-around  lg:mt-10 w-full">
         <Link
           href="https://www.linkedin.com/in/luka-akhalbedashvili-02620a199/"
           target="_blank"
