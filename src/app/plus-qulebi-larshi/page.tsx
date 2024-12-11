@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const Page = () => {
   return (
-    <main className="flex flex-col items-center w-full px-4 lg:px-[25%] py-10 bg-background">
+    <main className="flex flex-col items-center  w-full px-4 lg:px-[25%] py-10 bg-background">
       <section className="text-white w-full text-center py-8 rounded-lg mb-10 flex flex-col items-center">
         <h2 className="text-xl font-bold">
           PLUS ქულების გამოყენების გზამკვლევი
@@ -29,7 +29,7 @@ const Page = () => {
 
       <Transactions title="Plus ქულები ლარში" />
 
-      <section className="text-gray-400 w-full p-6 rounded-lg shadow-md mb-8 bg-body text-sm">
+      <section className="text-gray-400 w-full p-6 rounded-lg shadow-md mb-8 bg-body text-sm mt-8">
         <h2 className="text-xl font-semibold mb-4">PLUS ქულების ღირებულება</h2>
 
         <div className="space-y-4">

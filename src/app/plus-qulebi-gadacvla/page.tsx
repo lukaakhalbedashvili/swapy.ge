@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const Page = () => {
   return (
     <main className="flex flex-col items-center  w-full px-4 lg:px-[25%] py-10 bg-background">
-      <section className=" text-white w-full text-center py-8 rounded-lg mb-10 flex flex-col items-center">
+      <section className="text-white w-full text-center py-8 rounded-lg mb-10 flex flex-col items-center">
         <h2 className="text-xl font-bold">PLUS ქულები გადაცვლა</h2>
 
         <p className="mt-6 text-md leading-relaxed">

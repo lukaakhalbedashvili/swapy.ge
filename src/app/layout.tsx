@@ -54,11 +54,11 @@ export default function RootLayout({
 
         {children}
 
+        <Footer />
+
         <Analytics />
 
         <GoogleAnalytics gaId="G-WWWW1XHYKH" />
-
-        <Footer />
 
         <Chat />
       </body>
