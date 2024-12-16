@@ -5,7 +5,7 @@ import React from "react";
 export const metadata: Metadata = {
   title: "პლუს ქულები ლარში",
   description:
-    "პლუს ქულები ლარში - აღმოაჩინეთ, თუ როგორ შეგიძლიათ გამოიყენოთ და გადაცვალოთ Plus ქულები საქართველოს ბანკის მობაილ ბანკის აპლიკაციით.",
+    "პლუს ქულები ლარში - აღმოაჩინეთ, თუ როგორ შეგიძლიათ გამოიყენოთ და გადაცვალოთ პლუს ქულები ლარში ქულები საქართველოს ბანკის მობაილ ბანკის აპლიკაციით.",
 };
 
 const Page = () => {
@@ -13,7 +13,7 @@ const Page = () => {
     <main className="flex flex-col items-center  w-full px-4 lg:px-[25%] py-10 bg-background">
       <section className="text-white w-full text-center py-8 rounded-lg mb-10 flex flex-col items-center">
         <h2 className="text-xl font-bold">
-          PLUS ქულების გამოყენების გზამკვლევი
+          PLUS ქულების გამოყენების გზამკვლევი - პლუს ქულები ლარში
         </h2>
 
         <p className="mt-6 text-md leading-relaxed">
@@ -36,13 +36,13 @@ const Page = () => {
           <p>PLUS ქულების გაანგარიშება მარტივია:</p>
 
           <ul className="list-disc list-inside space-y-2">
-            <li>400 PLUS ქულა = 1 ლარი (სტანდარტული გაცვლა)</li>
-            <li>4000 PLUS ქულა = 10 ლარი</li>
+            <li>1200 PLUS ქულა = 2 ლარი (სტანდარტული გაცვლა)</li>
+            <li>12000 PLUS ქულა = 20 ლარი</li>
             <li>
               <a href="/" className="cursor-pointer text-main">
                 Swapy
               </a>
-              -ზე 400 PLUS ქულა = 1.1 ლარი (გაზრდილი ღირებულება)
+              -ზე 1600 PLUS ქულა = 4.4 ლარი (გაზრდილი ღირებულება)
             </li>
           </ul>
 
@@ -52,7 +52,7 @@ const Page = () => {
 
       <section className="text-gray-400 w-full p-6 rounded-lg shadow-md mb-8 bg-body text-sm">
         <h2 className="text-xl font-semibold mb-4">
-          PLUS ქულების გაცვლის პროცესი
+          PLUS ქულების გაცვლის პროცესი - პლუს ქულები ლარში
         </h2>
 
         <div className="space-y-4">
