@@ -1,4 +1,3 @@
-import Transactions from "@/sections/Transactions";
 import { Metadata } from "next";
 import React from "react";
 
@@ -26,8 +25,6 @@ const Page = () => {
           </a>
         </p>
       </section>
-
-      <Transactions title="Plus ქულები ლარში" />
 
       <section className="text-gray-400 w-full p-6 rounded-lg shadow-md mb-8 bg-body text-sm mt-8">
         <h2 className="text-xl font-semibold mb-4">PLUS ქულების ღირებულება</h2>

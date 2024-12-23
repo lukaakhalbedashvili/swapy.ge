@@ -21,6 +21,12 @@ const Footer = () => {
           <li className="mb-4 lg:mb-0 lg:mr-6">
             <Link href="/#კონტაქტი">კონტაქტი</Link>
           </li>
+
+          <li className="mb-4 lg:mb-0 lg:mr-6">
+            <Link href="/yvelaferi-plus-qulebis-shesaxeb">
+              ყველაფერი პლუს ქულების შესახებ
+            </Link>
+          </li>
         </ul>
       </nav>
     </footer>
