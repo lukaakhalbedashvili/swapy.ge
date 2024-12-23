@@ -39,7 +39,9 @@ const Sell = () => {
         name="plusPointsToSell"
         onBlurHandler={handleBlur}
         onChange={(e) => {
-          const receivedMoney = (Number(e.target.value) * 1.1) / BOG_RATE;
+          const sanitizedValue = e.target.value.replace(/[,.]/g, "");
+          const numericValue = Number(sanitizedValue);
+          const receivedMoney = (numericValue * 1.1) / BOG_RATE;
           setFieldValue("receivedMoney", receivedMoney.toFixed(2));
           return handleChange(e);
         }}
