@@ -15,7 +15,8 @@ import Chat from "@/components/Chat";
 
 export const metadata: Metadata = {
   title: "გადაცვალე PLUS ქულები ლარში",
-  description: "გადაცვალე პლუს ქულები ლარში",
+  description:
+    "გადაცვალე პლუს ქულები ლარში - გაეცანი: როგორ დააგროვო, გამოიყენო ან გადაცვალო პლუს ქულები ლარში ღირებულებაზე მეტ ფასად - Swapy, plus ქულების გაყიდვის უსაფრთხო გზა",
   keywords: [
     "plus qulebis gadacvla",
     "plus qulebis gayidva",
