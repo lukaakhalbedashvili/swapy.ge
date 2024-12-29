@@ -14,21 +14,13 @@ const CollapsibleFAQ = ({
   };
 
   return (
-    <div onClick={toggleFAQ}>
-      <button
-        className={`w-full focus:outline-none p-4 pl-2 text-center ${
-          isOpen && "pt-12"
-        }`}
-      >
-        {/* {question} */}
-        <div
-          // className="p-4 pl-2 pt-0 border-b pb-12 mt-5 lg:text-center"
-          dangerouslySetInnerHTML={{ __html: question }}
-        />
+    <div onClick={toggleFAQ} className="flex flex-col justify-start">
+      <button className={`w-full focus:outline-none p-4 pl-2 text-center`}>
+        <div dangerouslySetInnerHTML={{ __html: question }} />
       </button>
 
       <div
-        className={`overflow-hidden transition-height duration-300 ${
+        className={`overflow-hidden transition-height ${
           isOpen ? "h-auto" : "h-0"
         }`}
       >

@@ -1,5 +1,6 @@
 import AreWeScammers from "@/components/AreWeScammers";
 import Chat from "@/components/Chat";
+import AboutPlusPoints from "@/sections/AboutPlusPoints";
 import AboutUs from "@/sections/AboutUs";
 import Contact from "@/sections/Contact";
 import FAQ from "@/sections/FAQ";
@@ -14,6 +15,8 @@ const Home = () => {
       <Transactions title="პლუს ქულების გაყიდვა" />
 
       <FAQ />
+
+      <AboutPlusPoints />
 
       <AboutUs />
 

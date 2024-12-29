@@ -1,22 +1,18 @@
-import { Metadata } from "next";
 import React from "react";
 
-export const metadata: Metadata = {
-  title: "ყველაფერი საქართველოს ბანკის პლუს ქულების შესახებ",
-  description:
-    "ყველაფერი საქართველოს ბანკის პლუს ქულების შესახებ - როგორ დავაგროვოთ ქულები? სად გამოვიყენოთ ისინი? როგორ გადავცვალოთ Plus ქულები ლარში?",
-};
-
-const PlusPointsPage = () => {
+const AboutPlusPoints = () => {
   return (
-    <div className="flex flex-col items-center  w-full px-4 lg:px-[25%] py-10 bg-background text-white">
-      <h1 className="text-2xl font-bold mb-20 mt-10">
+    <section
+      className="pt-[20%] lg:pt-[10%] w-full flex items-center flex-col pb-20 lg:text-center"
+      id="plus ქულების შესახებ"
+    >
+      <h2 className="w-full text-center flex justify-center mb-10">
         საქართველოს ბანკის PLUS ქულების ლოიალობის პროგრამა
-      </h1>
+      </h2>
 
-      <section className="mb-6 text-gray-400 bg-body p-6 rounded-lg">
-        <h2 className="text-xl font-semibold mb-2">1. რა არის Plus ქულები?</h2>
-        <ul className="list-disc pl-6">
+      <div className="bg-body rounded-lg p-2 lg:p-10 text-gray-400 text-center w-full">
+        <h3 className="text-white font-semibold mb-10">რა არის Plus ქულები?</h3>
+        <ul className="list-disc pl-6 text-start">
           <li>
             Plus ქულები არის ლოიალობის ქულები, რომლებსაც მომხმარებლები აგროვებენ
             საქართველოს ბანკის ბარათებით ტრანზაქციების შესრულებით ან სხვა
@@ -25,101 +21,90 @@ const PlusPointsPage = () => {
             შეთავაზებების მისაღებად.
           </li>
         </ul>
-      </section>
 
-      <section className="mb-6 text-gray-400 bg-body p-6 rounded-lg">
-        <h2 className="text-xl font-semibold mb-2">
-          2. როგორ დავაგროვოთ Plus ქულები?
-        </h2>
-        <ul className="list-disc pl-6">
-          <li>
+        <h3 className="text-white font-semibold mb-10 mt-20">
+          როგორ დავაგროვოთ Plus ქულები?
+        </h3>
+        <ul className="list-disc pl-6 text-start">
+          <li className="mb-3">
             ბარათით გადახდა: Plus ქულები გროვდება საქართველოს ბანკის ბარათით
             ადგილობრივ და საერთაშორისო მაღაზიებში გადახდაზე.
           </li>
-          <li>
+          <li className="mb-3">
             ონლაინ შესყიდვები: ონლაინ შოპინგით შესრულებული ტრანზაქციებისთვისაც
             შეგიძლიათ ქულების მიღება.
           </li>
-          <li>
+          <li className="mb-3">
             საბანკო სერვისები: გარკვეული საბანკო სერვისებით სარგებლობისას ბანკი
             დამატებით ქულებს გაწვდით.
           </li>
-          <li>
+          <li className="mb-3">
             პარტნიორი კომპანიები: Plus ქულების მიღება შესაძლებელია ბანკის
             პარტნიორ ორგანიზაციებთან თანამშრომლობისას.
           </li>
         </ul>
-      </section>
 
-      <section className="mb-6 text-gray-400 bg-body p-6 rounded-lg">
-        <h2 className="text-xl font-semibold mb-2">
-          3. როგორ გამოვიყენოთ Plus ქულები?
+        <h2 className="text-white font-semibold mb-10 mt-20">
+          როგორ გამოვიყენოთ Plus ქულები?
         </h2>
-        <ul className="list-disc pl-6">
-          <li>
+        <ul className="list-disc pl-6 text-start">
+          <li className="mb-3">
             <a href="/" className="cursor-pointer text-main">
               შეგიძლიათ პლუს ქულები გადაცვალოთ ლარში
               {" swapy.ge "}
             </a>
             - ზე ღირებულებაზე მეტ ფასად.
           </li>
-          <li>
+          <li className="mb-3">
             მაღაზიები და სერვისები: ქულების გამოყენება შესაძლებელია ბანკის
             პარტნიორი მაღაზიებისა და სერვისების ქსელში.
           </li>
-          <li>
+          <li className="mb-3">
             ფასდაკლებები: ქულების გამოყენებით შეგიძლიათ მიიღოთ სხვადასხვა
             პროდუქციაზე ფასდაკლება.
           </li>
-          <li>
+          <li className="mb-3">
             საჩუქრები და შეთავაზებები: გარკვეული რაოდენობის ქულების დაგროვების
             შემდეგ, შეიძლება მიიღოთ სპეციალური საჩუქრები ან უნიკალური
             შეთავაზებები.
           </li>
-          <li>
+          <li className="mb-3">
             ტურისტული სერვისები: ქულების დახარჯვა შესაძლებელია ტურისტული
             მომსახურებების მისაღებადაც.
           </li>
         </ul>
-      </section>
 
-      <section className="mb-6 text-gray-400 bg-body p-6 rounded-lg">
-        <h2 className="text-xl font-semibold mb-2">
-          4. როგორ შევამოწმოთ ქულების რაოდენობა?
+        <h2 className="text-white font-semibold mb-10 mt-20">
+          როგორ შევამოწმოთ ქულების რაოდენობა?
         </h2>
-        <ul className="list-disc pl-6">
-          <li>
+        <ul className="list-disc pl-6 text-start">
+          <li className="mb-3">
             საქართველოს ბანკის მობილბანკი: Plus ქულების შემოწმება შესაძლებელია
             საქართველოს ბანკის მობილბანკის აპლიკაციის მეშვეობით.
           </li>
-          <li>
+          <li className="mb-3">
             ინტერნეტ ბანკი: ასევე, შესაძლებელია ქულების რაოდენობის ნახვა
             ინტერნეტ ბანკის პროფილში.
           </li>
-          <li>
+          <li className="mb-3">
             ქოლცენტრი: ქულების შესახებ ინფორმაციის მიღება შესაძლებელია
             საქართველოს ბანკის ქოლცენტრში დარეკვით.
           </li>
         </ul>
-      </section>
 
-      <section className="mb-6 text-gray-400 bg-body p-6 rounded-lg">
-        <h2 className="text-xl font-semibold mb-2">5. დამატებითი ინფორმაცია</h2>
-        <ul className="list-disc pl-6">
+        <h2 className="text-white font-semibold mb-10 mt-20">
+          დამატებითი ინფორმაცია
+        </h2>
+        <ul className="list-disc pl-6 text-start">
           <li>
             პარტნიორები: პარტნიორი კომპანიების სია და დეტალები პერიოდულად
             განახლდება და შეგიძლიათ იხილოთ საქართველოს ბანკის ვებგვერდზე ან
             მობილბანკში.
           </li>
         </ul>
-      </section>
-
-      <p className="my-10 text-gray-400 text-center text-sm">
-        თუ გჭირდებათ დამატებითი ინფორმაცია, შეგიძლიათ იხილოთ საქართველოს ბანკის
-        ოფიციალური ვებგვერდი ან დაუკავშირდეთ ბანკის მხარდაჭერის ცენტრს.
-      </p>
-    </div>
+      </div>
+    </section>
   );
 };
 
-export default PlusPointsPage;
+export default AboutPlusPoints;

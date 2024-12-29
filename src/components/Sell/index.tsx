@@ -11,6 +11,15 @@ const Sell = () => {
 
   return (
     <div className="text-center px-2 text  font-bold mt-10 ">
+      <div className="absolute bottom-3 right-3 flex">
+        <div className="relative flex justify-center items-center mr-2">
+          <div className="w-2 h-2 bg-primary rounded-full animate-ping bg-main"></div>
+          <div className="w-2 h-2 bg-primary rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  bg-main"></div>
+        </div>
+
+        <p className="text-xs">24/7 - ზე ხელმისაწვდომია</p>
+      </div>
+
       <h2 className="leading-7 lg:leading-9">
         გადმორიცხე ნებისმიერი რაოდენობის <b>PLUS ქულა</b> პირად ნომერზე :{" "}
       </h2>
