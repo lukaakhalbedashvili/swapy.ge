@@ -11,7 +11,7 @@ import Transactions from "@/sections/Transactions";
 
 const Home = () => {
   return (
-    <main className="flex flex-col items-center bg-background text-white  pt-[20%] lg:pt-[4%] lg:px-[25%] w-full">
+    <main className="flex flex-col items-center bg-background text-white  pt-[20%] lg:pt-[4%] lg:px-[25%] w-full px-2">
       <Transactions title="პლუს ქულების გაყიდვა" />
 
       <FAQ />
