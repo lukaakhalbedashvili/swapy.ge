@@ -11,8 +11,10 @@ const AboutPlusPoints = () => {
       </h2>
 
       <div className="bg-body rounded-lg p-2 lg:p-10 text-gray-400 text-center w-full">
-        <h3 className="text-white font-semibold mb-10">რა არის Plus ქულები?</h3>
-        <ul className="list-disc pl-6 text-start">
+        <h3 className="text-white font-semibold mb-10 mt-10">
+          რა არის Plus ქულები?
+        </h3>
+        <ul className="list-disc pl-6 text-center">
           <li>
             Plus ქულები არის ლოიალობის ქულები, რომლებსაც მომხმარებლები აგროვებენ
             საქართველოს ბანკის ბარათებით ტრანზაქციების შესრულებით ან სხვა
@@ -25,7 +27,7 @@ const AboutPlusPoints = () => {
         <h3 className="text-white font-semibold mb-10 mt-20">
           როგორ დავაგროვოთ Plus ქულები?
         </h3>
-        <ul className="list-disc pl-6 text-start">
+        <ul className="list-disc pl-6 text-center">
           <li className="mb-3">
             ბარათით გადახდა: Plus ქულები გროვდება საქართველოს ბანკის ბარათით
             ადგილობრივ და საერთაშორისო მაღაზიებში გადახდაზე.
@@ -47,7 +49,7 @@ const AboutPlusPoints = () => {
         <h2 className="text-white font-semibold mb-10 mt-20">
           როგორ გამოვიყენოთ Plus ქულები?
         </h2>
-        <ul className="list-disc pl-6 text-start">
+        <ul className="list-disc pl-6 text-center">
           <li className="mb-3">
             <a href="/" className="cursor-pointer text-main">
               შეგიძლიათ პლუს ქულები გადაცვალოთ ლარში
@@ -77,7 +79,7 @@ const AboutPlusPoints = () => {
         <h2 className="text-white font-semibold mb-10 mt-20">
           როგორ შევამოწმოთ ქულების რაოდენობა?
         </h2>
-        <ul className="list-disc pl-6 text-start">
+        <ul className="list-disc pl-6 text-center">
           <li className="mb-3">
             საქართველოს ბანკის მობილბანკი: Plus ქულების შემოწმება შესაძლებელია
             საქართველოს ბანკის მობილბანკის აპლიკაციის მეშვეობით.
@@ -95,7 +97,7 @@ const AboutPlusPoints = () => {
         <h2 className="text-white font-semibold mb-10 mt-20">
           დამატებითი ინფორმაცია
         </h2>
-        <ul className="list-disc pl-6 text-start">
+        <ul className="list-disc pl-6 text-center mb-10">
           <li>
             პარტნიორები: პარტნიორი კომპანიების სია და დეტალები პერიოდულად
             განახლდება და შეგიძლიათ იხილოთ საქართველოს ბანკის ვებგვერდზე ან
