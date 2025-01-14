@@ -3,15 +3,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import { GoogleAnalytics } from "@next/third-parties/google";
-
 import localFont from "next/font/local";
-
 const myFont = localFont({ src: "../../public/mark-geo.woff2" });
 
 import { Analytics } from "@vercel/analytics/react";
 import Header from "@/sections/Header";
 import Footer from "@/sections/Footer";
-import Chat from "@/components/Chat";
 
 export const metadata: Metadata = {
   title: "გადაცვალე PLUS ქულები ლარში",
@@ -60,8 +57,6 @@ export default function RootLayout({
         <Analytics />
 
         <GoogleAnalytics gaId="G-WWWW1XHYKH" />
-
-        <Chat />
       </body>
     </html>
   );

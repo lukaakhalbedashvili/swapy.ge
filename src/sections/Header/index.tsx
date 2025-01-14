@@ -6,9 +6,9 @@ const Header = () => (
   <header className="flex items-center w-full px-4 bg-header text-white sticky top-0 z-10 py-3 lg:px-10">
     <nav className="w-full items-center flex">
       <ul className="flex items-center w-full ">
-        <li className="cursor-pointer">
+        <li className="cursor-pointer h-10 w-10 relative">
           <Link href="/">
-            <Image src="/logo-alt.svg" width={20} height={20} alt="swapy" />
+            <Image src="/logo-alt.svg" fill alt="swapy" />
           </Link>
         </li>
 
