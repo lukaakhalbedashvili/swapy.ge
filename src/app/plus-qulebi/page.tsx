@@ -25,8 +25,6 @@ const Page = () => {
         </p>
       </section>
 
-      <Transactions title="plus ქულები" />
-
       <section className="text-gray-400 w-full p-6 rounded-lg shadow-md mb-8 bg-body text-sm mt-8">
         <h2 className="text-xl font-semibold mb-4">
           როგორ გავიგოთ PLUS ქულების ღირებულება

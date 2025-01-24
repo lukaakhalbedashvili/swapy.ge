@@ -12,6 +12,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   permanentText?: string;
   inputMode?: "numeric" | "text";
   errorMessageClassName?: string;
+  wrapperClassName?: string;
 }
 
 const Input = ({
@@ -25,11 +26,12 @@ const Input = ({
   value,
   permanentText,
   inputMode,
-  errorMessageClassName = "text-error mt-1 absolute",
+  errorMessageClassName,
+  wrapperClassName,
   ...props
 }: InputProps) => {
   return (
-    <div className="relative my-8">
+    <div className={`${wrapperClassName} relative my-8 `}>
       <input
         placeholder={placeholder}
         type={type}
@@ -46,7 +48,11 @@ const Input = ({
         {permanentText}
       </span>
 
-      {errorMessage && <p className={errorMessageClassName}>{errorMessage}</p>}
+      {errorMessage && (
+        <p className={`text-error mt-1 absolute ${errorMessageClassName}`}>
+          {errorMessage}
+        </p>
+      )}
     </div>
   );
 };

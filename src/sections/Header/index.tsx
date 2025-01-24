@@ -23,10 +23,6 @@ const Header = () => (
         <li className="ml-4 lg:ml-10 hidden lg:inline">
           <a href="/#კონტაქტი">კონტაქტი</a>
         </li>
-
-        <li className="ml-4 lg:ml-10 text-nowrap">
-          <a href="/#სკამერები ვართ?">სკამერები ვართ?</a>
-        </li>
       </ul>
     </nav>
   </header>

@@ -1,50 +1,39 @@
-import React, { useEffect } from "react";
+import React, { memo, useEffect } from "react";
 import Input from "../Input";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useRouter } from "next/navigation";
-// import { getPaymentLinkAction } from "@/server-actions";
-// import { PaymentMethods } from "@/server-actions/server_actions_types";
 import CountUp from "react-countup";
 
 const Buy = () => {
-  const myRate = 1.6;
+  const myRate = 1.35;
   const bogRate = 400;
   const minBuyTransaction = 4000;
-  const maxBuyTransaction = 40000;
-
-  const router = useRouter();
+  const maxBuyTransaction = 80000;
 
   const validationSchema = Yup.object().shape({
+    personalId: Yup.string()
+      .required("პირადი ნომერი სავალდებულოა")
+      .length(11, "პირადი ნომერი უნდა შედგებოდეს 11 სიმბოლოსგან"),
     plusPointsBuy: Yup.number()
       .typeError("")
       .required("სავალდებულოა")
       .min(minBuyTransaction, `მინიმალური რაოდენობა ${minBuyTransaction} ქულაა`)
       .max(
         maxBuyTransaction,
-        `ტრანზაქციის მაქსიმალური რაოდენობა ${maxBuyTransaction} ქულაა`
+        `მაქსიმალური რაოდენობა ${maxBuyTransaction} ქულაა`
       ),
 
-    requiredLariAmount: Yup.number()
-      .typeError("")
-      .required("სავალდებულოა")
-      .min(16, "მინიმალური რაოდენობა 16 ლარია")
-      .max(160, "მინიმალური რაოდენობა 160 ლარია"),
+    requiredLariAmount: Yup.number().typeError("").required("სავალდებულოა"),
   });
 
   const formik = useFormik({
     initialValues: {
+      personalId: "",
       plusPointsBuy: undefined,
       requiredLariAmount: undefined,
     },
     validationSchema,
-    onSubmit: async ({ requiredLariAmount }) => {
-      // const response = await getPaymentLinkAction({
-      //   requiredLariAmount: requiredLariAmount!,
-      //   paymentMethod: PaymentMethods.card,
-      // });
-      // router.push(response._links.redirect.href);
-    },
+    onSubmit: async ({ requiredLariAmount, personalId }) => {},
   });
 
   const {
@@ -68,10 +57,10 @@ const Buy = () => {
       className="mt-6 flex flex-col justify-between"
     >
       <div className="flex flex-col w-full items-center justify-center">
-        <p className="text-sm my-5">ხელმისაწვდომი პლუს ქულების რაოდენობა</p>
+        <p className="my-5">ხელმისაწვდომი პლუს ქულების რაოდენობა</p>
 
         <h3 className="text-2xl ">
-          <CountUp end={370051} />
+          <CountUp end={2284962} />
         </h3>
       </div>
 
@@ -87,6 +76,7 @@ const Buy = () => {
           setFieldValue("requiredLariAmount", requiredLariAmount.toFixed(2));
           return handleChange(e);
         }}
+        errorMessageClassName="text-sm"
         errorMessage={touched.plusPointsBuy && errors.plusPointsBuy}
         permanentText={values.plusPointsBuy ? "PLUS ქულა" : ""}
       />
@@ -110,18 +100,30 @@ const Buy = () => {
           setFieldValue("plusPointsBuy", Math.round(plusPointsBuy));
           return handleChange(e);
         }}
+        errorMessageClassName="text-sm"
         errorMessage={touched.requiredLariAmount && errors.requiredLariAmount}
+      />
+
+      <Input
+        placeholder="პირადი ნომერი"
+        type="text"
+        value={values.personalId}
+        name="personalId"
+        onBlurHandler={handleBlur}
+        onChange={handleChange}
+        errorMessageClassName="text-sm"
+        errorMessage={touched.personalId && errors.personalId}
       />
 
       <div className="flex flex-col items-center w-full justify-center">
         <p className="text-smallSecondaryTxt">
           {bogRate} Plus ქულა = {myRate.toFixed(2)} ₾
         </p>
-        {/* <p className="text-smallSecondaryTxt">{bogRate} Plus ქულა = 1.00 ₾</p> */}
 
-        {values.plusPointsBuy && (
-          <p className=" mt-4 text-white">
-            ანგარიშზე დაგერიცხებათ {values.plusPointsBuy} PLUS ქულა
+        {values.plusPointsBuy && values.personalId && !errors.personalId && (
+          <p className=" mt-4 text-white text-sm  text-center">
+            პირად ნომერზე ({values.personalId}) დაგერიცხებათ{" "}
+            {values.plusPointsBuy} PLUS ქულა
           </p>
         )}
       </div>

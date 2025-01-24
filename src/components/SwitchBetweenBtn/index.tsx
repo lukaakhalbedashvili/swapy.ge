@@ -1,4 +1,5 @@
 import { TransactionType } from "@/sections/Transactions";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 interface ISwitchBetweenBtn {
@@ -10,6 +11,7 @@ const SwitchBetweenBtn = ({
   onClickHandler,
   selectedTransactionType,
 }: ISwitchBetweenBtn) => {
+  const router = useRouter();
   const getBtnColor = (btn: TransactionType) => {
     return selectedTransactionType === btn ? "bg-secondary" : "bg-disabledBTN";
   };
@@ -21,7 +23,10 @@ const SwitchBetweenBtn = ({
         className={`w-[49%] p-2 rounded-lg ${getBtnColor(
           TransactionType.SELL
         )}`}
-        onClick={() => onClickHandler(TransactionType.SELL)}
+        onClick={() => {
+          router.push("/?tab=sell");
+          onClickHandler(TransactionType.SELL);
+        }}
       >
         გაყიდვა
       </button>
@@ -29,7 +34,10 @@ const SwitchBetweenBtn = ({
       <button
         type="button"
         className={`w-[49%] p-2 rounded-lg ${getBtnColor(TransactionType.BUY)}`}
-        onClick={() => onClickHandler(TransactionType.BUY)}
+        onClick={() => {
+          router.push("/?tab=buy");
+          onClickHandler(TransactionType.BUY);
+        }}
       >
         ყიდვა
       </button>

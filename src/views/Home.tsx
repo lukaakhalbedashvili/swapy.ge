@@ -4,12 +4,12 @@ import AboutUs from "@/sections/AboutUs";
 import Contact from "@/sections/Contact";
 import FAQ from "@/sections/FAQ";
 import Team from "@/sections/Team";
-import Transactions from "@/sections/Transactions";
+import Transactions, { TransactionType } from "@/sections/Transactions";
 
-const Home = () => {
+const Home = ({ tab }: { tab: TransactionType }) => {
   return (
-    <main className="flex flex-col items-center bg-background text-white  pt-[12%] lg:pt-[4%] lg:px-[25%] w-full px-2">
-      <Transactions title="პლუს ქულების გაყიდვა" />
+    <main className="flex flex-col items-center bg-background text-white lg:pt-[4%] lg:px-[25%] w-full px-2">
+      <Transactions title="პლუს ქულების გაყიდვა" tab={tab} />
 
       <FAQ />
 
