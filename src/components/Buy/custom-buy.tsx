@@ -28,7 +28,6 @@ const CustomBuy = () => {
     touched,
     errors,
     setFieldValue,
-    handleSubmit,
     validateForm,
   } = formik;
 
@@ -42,11 +41,11 @@ const CustomBuy = () => {
     <>
       {isAlert && <Alert text="დაკოპირდა" onClose={() => setIsAlert(false)} />}
 
-      <div className="flex flex-col w-full items-center justify-center mb-10">
-        <p className="my-5">ხელმისაწვდომი პლუს ქულების რაოდენობა</p>
+      <div className="flex flex-col w-full items-center justify-center mb-5 md:mb-10">
+        <p className="my-5 text-sm">ხელმისაწვდომი პლუს ქულების რაოდენობა</p>
 
         <h3 className="text-2xl">
-          <CountUp end={2284962} />
+          <CountUp end={12284962} />
         </h3>
       </div>
 
@@ -82,14 +81,14 @@ const CustomBuy = () => {
           და მიიღე PLUS ქულები სანაცვლოდ, 5 წუთის განმავლობაში
         </h2>
 
-        <p className="text-sm text-center textmain mt-10">
+        <p className="text-sm text-center textmain mt-5">
           გადმორიცხვისას დანიშნულების ველში უთითებთ მიმღებ{" "}
           <b className="text-main">პირად ნომერს</b> (პირად ნომერს, რომელზეც პლუს
           ქულები უნდა დაგერიცხოთ) წინააღმდეგ შემთხვევაში თანხა უკან
           დაგიბრუნდებათ.
         </p>
 
-        <h3 className="text-main mt-10 mb-6">კალკულატორი</h3>
+        <h3 className="text-main mt-8 mb-4">კალკულატორი</h3>
 
         <Input
           placeholder="შესაძენი პლუს ქულების რაოდენობა"
@@ -115,7 +114,7 @@ const CustomBuy = () => {
           type="number"
           value={values.requiredLariAmount}
           name="requiredLariAmount"
-          wrapperClassName="w-full   mt-0"
+          wrapperClassName="w-full mt-0"
           onBlurHandler={(e) => {
             setFieldValue(
               "requiredLariAmount",
