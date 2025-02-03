@@ -11,7 +11,7 @@ const Buy = () => {
 
   const router = useRouter();
 
-  const myRate = 1.35;
+  const myRate = 1.4;
   const bogRate = 400;
   const minBuyTransaction = 4000;
   const maxBuyTransaction = 80000;

@@ -8,7 +8,7 @@ import Dialog from "../Modal";
 import { Slider2 } from "../Slider2";
 
 const CustomBuy = () => {
-  const myRate = 1.35;
+  const myRate = 1.4;
   const bogRate = 400;
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
 
@@ -42,17 +42,17 @@ const CustomBuy = () => {
       {isAlert && <Alert text="დაკოპირდა" onClose={() => setIsAlert(false)} />}
 
       <div className="flex flex-col w-full items-center justify-center mb-5 md:mb-10">
-        <p className="my-5 text-sm">ხელმისაწვდომი პლუს ქულების რაოდენობა</p>
+        <p className="my-2 text-xs">ხელმისაწვდომი პლუს ქულების რაოდენობა</p>
 
-        <h3 className="text-2xl">
+        <h3 className="text-xl font-bold">
           <CountUp end={12284962} />
         </h3>
       </div>
 
-      <div className="flex flex-col items-center w-full">
+      <div className="flex flex-col items-center w-full text-sm">
         <h2 className="leading-7 lg:leading-9 text-center">
           გადმორიცხე მინიმუმ <b className="text-main">100 ლარი</b> ანგარიშის
-          ნომერზე :{" "}
+          ნომერზე
         </h2>
 
         <div
@@ -102,7 +102,7 @@ const CustomBuy = () => {
             setFieldValue("requiredLariAmount", requiredLariAmount.toFixed(2));
             return handleChange(e);
           }}
-          wrapperClassName="w-full   mt-0"
+          wrapperClassName="w-full mt-0 mb-6"
           errorMessageClassName="text-sm"
           errorMessage={touched.plusPointsBuy && errors.plusPointsBuy}
           permanentText={values.plusPointsBuy ? "PLUS ქულა" : ""}
@@ -134,7 +134,7 @@ const CustomBuy = () => {
         />
 
         {values.plusPointsBuy && (
-          <p className="mt-4 text-active text-sm  text-center mb-5">
+          <p className="text-active text-sm text-center mb-3">
             პირად ნომერზე დაგერიცხებათ
             <span className="font-bold"> {values.plusPointsBuy} </span> PLUS
             ქულა
