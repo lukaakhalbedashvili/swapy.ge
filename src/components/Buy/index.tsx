@@ -1,10 +1,16 @@
-import React, { memo, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Input from "../Input";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import CountUp from "react-countup";
+import { getPaymentLinkAction } from "@/server-actions/payments";
+import { useRouter } from "next/navigation";
 
 const Buy = () => {
+  const [loading, setLoading] = useState(false);
+
+  const router = useRouter();
+
   const myRate = 1.35;
   const bogRate = 400;
   const minBuyTransaction = 4000;
@@ -22,7 +28,6 @@ const Buy = () => {
         maxBuyTransaction,
         `მაქსიმალური რაოდენობა ${maxBuyTransaction} ქულაა`
       ),
-
     requiredLariAmount: Yup.number().typeError("").required("სავალდებულოა"),
   });
 
@@ -33,7 +38,24 @@ const Buy = () => {
       requiredLariAmount: undefined,
     },
     validationSchema,
-    onSubmit: async ({ requiredLariAmount, personalId }) => {},
+    onSubmit: async ({ requiredLariAmount, personalId }) => {
+      setLoading(true);
+      try {
+        if (!requiredLariAmount) return;
+
+        const response = await getPaymentLinkAction({
+          amount: "1",
+          // amount: requiredLariAmount,
+          govId: personalId,
+        });
+
+        if (response._links.redirect.href) {
+          router.push(response._links.redirect.href);
+        }
+      } catch (error) {
+        console.error("Error fetching payment link:", error);
+      }
+    },
   });
 
   const {
@@ -59,7 +81,7 @@ const Buy = () => {
       <div className="flex flex-col w-full items-center justify-center">
         <p className="my-5">ხელმისაწვდომი პლუს ქულების რაოდენობა</p>
 
-        <h3 className="text-2xl ">
+        <h3 className="text-2xl">
           <CountUp end={2284962} />
         </h3>
       </div>
@@ -121,17 +143,26 @@ const Buy = () => {
         </p>
 
         {values.plusPointsBuy && values.personalId && !errors.personalId && (
-          <p className=" mt-4 text-white text-sm  text-center">
-            პირად ნომერზე ({values.personalId}) დაგერიცხებათ{" "}
-            {values.plusPointsBuy} PLUS ქულა
+          <p className="mt-4 text-smallSecondaryTxt text-sm  text-center">
+            პირად ნომერზე
+            <span className="text-white"> {values.personalId} </span>
+            დაგერიცხებათ
+            <span className="text-white"> {values.plusPointsBuy} </span> PLUS
+            ქულა
           </p>
         )}
       </div>
 
-      <button className={`p-6 bg-main w-full rounded-lg mt-10`} type="submit">
-        {`გადახდა ( ${
-          values.requiredLariAmount ? values.requiredLariAmount : 0
-        } ₾ )`}
+      <button
+        className={`p-6 bg-main w-full rounded-lg mt-10 flex justify-center items-center`}
+        type="submit"
+        disabled={loading}
+      >
+        {loading ? (
+          <div className="animate-spin rounded-full h-6 w-6 border-t-4 border-b-4 border-white"></div>
+        ) : (
+          `გადახდა ( ${values.requiredLariAmount || 0} ₾ )`
+        )}
       </button>
     </form>
   );

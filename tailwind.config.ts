@@ -16,7 +16,7 @@ const config: Config = {
         body: "#242727",
         main: "#4edd98",
         secondary: "#34b377",
-        active: "#ff7f29",
+        active: "#4edd98",
         disabledBTN: "#2b2e2e",
         error: "#e14a44",
         smallSecondaryTxt: "#414444",

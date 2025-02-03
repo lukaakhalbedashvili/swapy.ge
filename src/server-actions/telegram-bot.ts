@@ -20,7 +20,7 @@ export const sendEmailToMe = async (text: string) => {
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      return console.log(error);
+      return console.error(error);
     }
   });
 };
@@ -51,6 +51,6 @@ export const sendMessage = async (text: string) => {
       alert("Failed to send message: " + data.description);
     }
   } catch (error) {
-    console.log("Error sending message: " + error);
+    console.error("Error sending message: " + error);
   }
 };

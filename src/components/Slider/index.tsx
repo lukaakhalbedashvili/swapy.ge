@@ -7,8 +7,27 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export const Slider = () => {
+  const [swiperInstance, setSwiperInstance] = useState<any>(null);
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (swiperInstance) {
+        if (event.key === "ArrowRight") {
+          swiperInstance.slideNext();
+        } else if (event.key === "ArrowLeft") {
+          swiperInstance.slidePrev();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  });
   return (
     <>
       <style jsx global>{`
@@ -22,7 +41,10 @@ export const Slider = () => {
       <Swiper
         slidesPerView={1}
         onSlideChange={() => console.log("Slide changed")}
-        onSwiper={(swiper) => console.log(swiper)}
+        onSwiper={(swiper) => {
+          console.log(swiper);
+          setSwiperInstance(swiper);
+        }}
         modules={[Navigation]}
         navigation={{
           nextEl: ".swiper-button-next",
@@ -89,7 +111,7 @@ export const Slider = () => {
           />
 
           <div className="absolute bottom-0 p-4 bg-body text-white w-full lg:flex lg:justify-center">
-            <ul className="list-none pl-5 lg:w-fit">
+            <ul className="list-none pl-5 lg:w-fit flex flex-col justify-center w-full items-center">
               <li className="mb-10 mt-10">
                 პირველ ველში წერთ მიმღებ პირად ნომერს
                 <a className="text-main"> 08101039664</a>
@@ -103,7 +125,7 @@ export const Slider = () => {
                 მესამე ველში წერთ გადასარიცხი <b>პლუს ქულების</b> რაოდენობას
               </li>
 
-              <li className="mb-8 text-center">
+              <li className="mb-8 lg:w-2/3 text-center">
                 კომენტარის ველში უთითებთ ანგარიშის ნომერს, რომელზეც გსურთ თანხა
                 დაგერიცხოთ. TBC ბანკის ანგარიშის მითითების შემთხვევაში თანხა
                 შემდეგ დღეს აგესახებათ.

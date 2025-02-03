@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import {
@@ -15,6 +15,8 @@ interface FormValues {
 }
 
 const AuthForm: React.FC = () => {
+  const [loading, setLoading] = useState(false);
+
   const validationSchema = Yup.object().shape({
     email: Yup.string()
       .email("არასწორი ელ-ფოსტის ფორმატი")
@@ -30,11 +32,12 @@ const AuthForm: React.FC = () => {
     },
     validationSchema,
     onSubmit: async (values) => {
+      setLoading(true);
       try {
         if (values.isLogin) {
           await signInWithEmailAndPassword(auth, values.email, values.password);
         } else {
-          const response = await createUserWithEmailAndPassword(
+          await createUserWithEmailAndPassword(
             auth,
             values.email,
             values.password
@@ -42,6 +45,8 @@ const AuthForm: React.FC = () => {
         }
       } catch (error) {
         formik.setFieldError("password", "პაროლი ან ემაილი არასწორია");
+      } finally {
+        setLoading(false);
       }
     },
   });
@@ -89,10 +94,17 @@ const AuthForm: React.FC = () => {
 
         <button
           type="submit"
-          className="p-3 bg-main text-white rounded-lg hover:opacity-90 transition text-base"
+          className="p-3 bg-main text-white rounded-lg hover:opacity-90 transition text-base flex justify-center items-center"
+          disabled={loading}
           onClick={() => setFieldValue("isLogin", values.isLogin)}
         >
-          {values.isLogin ? "შესვლა" : "რეგისტრაცია"}
+          {loading ? (
+            <div className="animate-spin rounded-full h-6 w-6 border-t-4 border-b-4 border-white"></div>
+          ) : values.isLogin ? (
+            "შესვლა"
+          ) : (
+            "რეგისტრაცია"
+          )}
         </button>
 
         <p
