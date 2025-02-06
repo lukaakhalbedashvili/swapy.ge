@@ -6,6 +6,9 @@ import Image from "next/image";
 import Alert from "../Alert";
 import Dialog from "../Modal";
 import { Slider2 } from "../Slider2";
+import AuthForm from "@/components/AuthForm";
+import Loading from "@/components/Loading";
+import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 
 const CustomBuy = () => {
   const myRate = 1.4;
@@ -36,6 +39,31 @@ const CustomBuy = () => {
   }, [values, validateForm]);
 
   const [isAlert, setIsAlert] = useState<boolean>();
+
+  const [user, setUser] = useState<User>();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      user && setUser(user);
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="py-32 flex items-center justify-center">
+        <Loading />;
+      </div>
+    );
+  }
+
+  if (!user) {
+    return <AuthForm />;
+  }
 
   return (
     <>
