@@ -56,7 +56,7 @@ const CustomBuy = () => {
   if (loading) {
     return (
       <div className="py-32 flex items-center justify-center">
-        <Loading />;
+        <Loading />
       </div>
     );
   }
