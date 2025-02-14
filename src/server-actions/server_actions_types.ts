@@ -29,3 +29,8 @@ export interface getPaymentLinkActionPayloadI {
   lariAmountTheyReceive: number;
   phone: string;
 }
+
+export enum TransactionType {
+  SELL = "sell",
+  BUY = "buy",
+}

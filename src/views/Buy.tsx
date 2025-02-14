@@ -7,10 +7,10 @@ import Team from "@/sections/Team";
 import Transactions from "@/sections/Transactions";
 import { TransactionType } from "@/server-actions/server_actions_types";
 
-const Home = () => {
+const Buy = () => {
   return (
     <main className="flex flex-col items-center bg-background text-white lg:px-[25%] w-full px-2">
-      <Transactions tab={TransactionType.SELL} />
+      <Transactions tab={TransactionType.BUY} />
 
       <FAQ />
 
@@ -27,4 +27,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Buy;

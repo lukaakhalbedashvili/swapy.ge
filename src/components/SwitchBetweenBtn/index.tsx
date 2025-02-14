@@ -1,4 +1,4 @@
-import { TransactionType } from "@/sections/Transactions";
+import { TransactionType } from "@/server-actions/server_actions_types";
 import { useRouter } from "next/navigation";
 import React from "react";
 
