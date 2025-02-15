@@ -2,12 +2,17 @@ import type { MetadataRoute } from "next";
 import comps from "@/data/comps.json";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const stores = comps.stores.map((store) => ({
-    url: `https://swapy.ge/plus-partniorebi/${store.brand_name
-      .toLowerCase()
-      .replace(/ /g, "-")}`,
-    lastModified: new Date(),
-  }));
+  const stores = comps.stores
+    .filter((item) => item.store_id && item.store_id !== "-" && item.brand_name)
+    .map((store) => ({
+      url: `https://swapy.ge/plus-partniorebi/${store.brand_name
+        .toLowerCase()
+        .replace(/[&+]/g, "and")
+        .replace(/[^a-z0-9-]/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-|-$/g, "")}`,
+      lastModified: new Date(),
+    }));
 
   const staticRoutes = [
     {

@@ -11,6 +11,7 @@ import Header from "@/sections/Header";
 import Footer from "@/sections/Footer";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://swapy.ge"),
   title: "გადაცვალე PLUS ქულები ლარში",
   description:
     "გადაცვალე პლუს ქულები ლარში - გაეცანი: როგორ დააგროვო, გამოიყენო ან გადაცვალო პლუს ქულები ლარში ღირებულებაზე მეტ ფასად - Swapy, plus ქულების გაყიდვის უსაფრთხო გზა",

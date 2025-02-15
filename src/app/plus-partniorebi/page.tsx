@@ -1,6 +1,12 @@
 import comps from "@/data/comps.json";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Plus ქულების პარტნიორი მაღაზიები",
+  description:
+    "სად დავხარჯო პლუს ქულები? გაეცანით ქულების პარტნიორ ბრენდებს და დააგროვეთ მეტი ქულა ან გადაცვალე ლარში",
+};
+
 const page = () => {
   const stores = comps.stores;
 

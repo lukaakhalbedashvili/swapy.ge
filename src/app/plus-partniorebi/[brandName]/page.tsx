@@ -14,7 +14,12 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const brand = comps.stores.find(
     (comp) =>
-      comp.brand_name.toLowerCase().replace(/ /g, "-") === params.brandName
+      comp.brand_name
+        .toLowerCase()
+        .replace(/[&+]/g, "and")
+        .replace(/[^a-z0-9-]/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-|-$/g, "") === params.brandName
   );
 
   return {
@@ -24,14 +29,22 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  return comps.stores.map((comp) => ({
-    brandName: comp.brand_name
-      .toLowerCase()
-      .replace(/[&+]/g, "and")
-      .replace(/[^a-z0-9-]/g, "-")
-      .replace(/-+/g, "-")
-      .replace(/^-|-$/g, ""),
-  }));
+  const brandNames = comps.stores.map((comp) => {
+    if (comp.brand_name === "") console.log(comp, "abaa");
+
+    return {
+      brandName: comp.brand_name
+        .toLowerCase()
+        .replace(/[&+]/g, "and")
+        .replace(/[^a-z0-9-]/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-|-$/g, ""),
+    };
+  });
+
+  return brandNames.filter(
+    (item) => item.brandName !== "" && item.brandName !== "-"
+  );
 }
 
 const Page = async ({ params }: PageProps) => {
