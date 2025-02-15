@@ -2,6 +2,7 @@ import CustomBuy from "@/components/Buy/custom-buy";
 import Sell from "@/components/Sell";
 import React from "react";
 import { TransactionType } from "@/server-actions/server_actions_types";
+import Link from "next/link";
 
 const Transactions = ({ tab }: { tab: TransactionType }) => {
   const getBtnColor = (btn: TransactionType) => {
@@ -14,23 +15,25 @@ const Transactions = ({ tab }: { tab: TransactionType }) => {
       id="გაცვალე"
     >
       <div className="flex items-center justify-between w-full">
-        <a
+        <Link
           className={`w-[49%] p-2 flex items-center justify-center rounded-lg ${getBtnColor(
             TransactionType.SELL
           )}`}
           href="/"
+          prefetch={true}
         >
           გაყიდვა
-        </a>
+        </Link>
 
-        <a
+        <Link
           className={`w-[49%] p-2 flex items-center justify-center rounded-lg ${getBtnColor(
             TransactionType.BUY
           )}`}
           href="/buy"
+          prefetch={true}
         >
           ყიდვა
-        </a>
+        </Link>
       </div>
 
       <div className="bg-body rounded-lg p-2 lg:p-5 relative mt-10">
